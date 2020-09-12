@@ -43,3 +43,5 @@ obj/
 *.ipr
 *~
 *.swp
+*local.properties
+*.zip

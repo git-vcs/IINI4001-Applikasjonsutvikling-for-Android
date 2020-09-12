@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Øving 03</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="titlebrukernavn">Brukernavn</string>
+    <string name="titelbirth">Fødselsdato</string>
+
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="navneliste">
+        <item>
+            <string name="navn1">Navn 1</string>
+        </item>
+        <item>
+            <string name="navn2">Navn 2</string>
+        </item>
+        <item>
+            <string name="navn3">Navn 3</string>
+        </item>
+    </string-array>
+
+    <string-array name="navnebeskrivelse">
+        <item>
+             <string name="navnb1">Dette er en lengre forklaring for nr1</string>
+        </item>
+        <item>
+             <string name="navnb2">Dette er en lengre forklaring for nr2</string>
+        </item>
+        <item>
+             <string name="navnb3">Dette er en lengre forklaring for nr3</string>
+        </item>
+    </string-array>
+
+</resources>

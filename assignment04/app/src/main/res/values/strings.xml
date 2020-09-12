@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="bilde1">Tittel til bilde nr 1</string>
+    <string name="bilde2">Tittel til bilde nr 2</string>
+    <string name="bilde3">Tittel til bilde nr 3</string>
+    <string name="bilde4">Tittel til bilde nr 4</string>
+    <string name="bilde5">Tittel til bilde nr 5</string>
+    <string name="bilde6">Tittel til bilde nr 6</string>
+    <string-array name="bildeNavn">
+        <item>@string/bilde1</item>
+        <item>@string/bilde2</item>
+        <item>@string/bilde3</item>
+        <item>@string/bilde4</item>
+        <item>@string/bilde5</item>
+        <item>@string/bilde6</item>
+    </string-array>
+
+    <string-array name="bildeBeskrivelse">
+        <item><string name="bildeBe1">Bildebeskrivelse til bilde nummer en</string></item>
+        <item><string name="bildeBe2">Bildebeskrivelse til bilde nummer to</string></item>
+        <item><string name="bildeBe3">Bildebeskrivelse til bilde nummer tre</string></item>
+        <item><string name="bildeBe4">Bildebeskrivelse til bilde nummer fire</string></item>
+        <item><string name="bildeBe5">Bildebeskrivelse til bilde nummer fem</string></item>
+        <item><string name="bildeBe6">Bildebeskrivelse til bilde nummer seks</string></item>
+    </string-array>
+</resources>
