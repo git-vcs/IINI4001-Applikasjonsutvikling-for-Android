@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/main_layout_fragment_picture_list"
-        android:name="com.assignment0402.PictureListFragment"
+        android:name="com.assignment0402.PictureListFragmentV2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#074AD5"

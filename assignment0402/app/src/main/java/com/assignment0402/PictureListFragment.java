@@ -40,16 +40,16 @@ public class PictureListFragment extends ListFragment {
         Log.i(this.getClass().getSimpleName(), "onViewCreated: ");
         super.onViewCreated(view, savedInstanceState);
         ConstraintLayout.LayoutParams params=new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.FILL_PARENT, ConstraintLayout.LayoutParams.FILL_PARENT);
-
         Resources res=getResources();
         String pictureListNavn[]=res.getStringArray(R.array.bildeNavn);
+        //Legger til navnene i lista
         setListAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1,pictureListNavn));
 
         //oppset for PictureFragment
         fragmentManager=getFragmentManager();
         ft=fragmentManager.beginTransaction();
         bilde=new PictureFragment();
-        ft.replace(R.id.main_layout_fragment_picture,bilde);
+        ft.replace(R.id.main_layout_fragment_picture,bilde,"bilde");
         ft.addToBackStack(null);
         ft.commit();
 
@@ -58,7 +58,7 @@ public class PictureListFragment extends ListFragment {
         ft=fragmentManager.beginTransaction();
         decriptionFragment=new DecriptionFragment();
         ft.replace(R.id.main_layout_fragment_description,decriptionFragment);
-        ft.addToBackStack(null);
+        ft.addToBackStack("");
         ft.commit();
 
         }
