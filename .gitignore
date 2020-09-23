@@ -46,3 +46,5 @@ obj/
 *local.properties
 *.zip
 node_modules
+HttpWrapperThreaded.java
+*.jar
