@@ -1,9 +1,6 @@
 package com.assignment_06_frontend;
-
 import android.app.Activity;
 import android.util.Log;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -18,19 +15,15 @@ public class Oppkobling extends Thread {
     PrintWriter skriveren;
     Socket forbindelse;
     Boolean running=true;
-    String req="-1";
+    String req="close";
     public Oppkobling(String url,int port){
         URL=url;
         PORT=port;
     }
-
-
+    //tråd
     public void run() {
         Log.i(this.getClass().getSimpleName(), "Thread is running");
-        Log.i("Thread", "run: ");
-        Log.i("Oppkobling:","Oppgi navnet på maskinen der tjenerprogrammet kjører: ");
         /* Setter opp forbindelsen til tjenerprogrammet */
-
         try {
             forbindelse = new Socket(URL,PORT);
             Log.i("Oppkobling:","Nå er forbindelsen opprettet.");
@@ -38,41 +31,35 @@ public class Oppkobling extends Thread {
             leseren = new BufferedReader(new InputStreamReader(forbindelse.getInputStream()));
             skriveren = new PrintWriter(forbindelse.getOutputStream(), true);
             /* Leser innledning fra tjeneren og skriver den til kommandovinduet */
-            String innledning1 = leseren.readLine();
-            String innledning2 = leseren.readLine();
-            res = innledning1 + " "+innledning2;
-            Log.i("Oppkobling:",innledning1 + " " + innledning2);
-            this.wait();//puse til vi har fått en request
 
         }catch (Exception e){
-
+            Log.i(this.getClass().getSimpleName()+" Oppkobling ",e.toString());
         }
 
         synchronized (this){
             while (running){
-                Log.i(this.getClass().getSimpleName(),"starter tråd igjen");
                 try {
-                    if(forbindelse.isConnected()&&!req.equals("-1")){
+                    this.wait(); // pauser tråden
+                    Log.i(this.getClass().getSimpleName(),"starter tråd igjen");
+                    if(forbindelse.isConnected()){
                         /* Åpner en forbindelse for kommunikasjon med tjenerprogrammet */
                         /* Leser tekst fra kommandovinduet (brukeren) */
                         skriveren.println(req);  // sender teksten til tjeneren
-                        res = leseren.readLine();  // mottar respons fra tjeneren
-                        Log.i("Oppkobling:","Respons fra kalkulator: " + res);
-                        req="-1";
-                        this.wait(); // pauser tråden
+                        if(!req.equals("close")){
+                            res = leseren.readLine();  // mottar respons fra tjeneren
+                            Log.i("Oppkobling:","Respons fra kalkulator: " + res);
+                        }
+                        req = "close";
                     }else{
                         Log.i("Oppkobling: ", "Får ikke kontakt med server");
-                        this.wait(); // pauser tråden
                     }
                 }catch (Exception e){
-                    Log.i("Exception", e.getLocalizedMessage());
+                    Log.i("Exception", e.toString());
                 }
 
             }
         }
-
-
-
+        Log.i(this.getClass().getSimpleName(), "Tråden er ferdig");
     }
 
     public String getRes(){
@@ -84,27 +71,22 @@ public class Oppkobling extends Thread {
         //setter requesten og starter tråden igjen.
         this.req=req;
         this.notify();
-
     }
 
     public synchronized void close(){
         /* Lukker forbindelsen */
         Log.i(this.getClass().getSimpleName(),"Lokker oppkoblingen");
-        sendReq(null);
+        req="close";
         running=false;
         notify();
-
         try {
-            this.join();// venter på at thread skal stoppe;
             leseren.close();
             skriveren.close();
             forbindelse.close();
         }catch (Exception e){
             Log.i(this.getClass().getSimpleName(),e.toString());
         }
-
-
-
     }
-    }
+
+}
 

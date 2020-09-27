@@ -1,13 +1,5 @@
 package com.assignment_06_frontend;
-import java.io.*;
-import java.net.*;
-import java.util.Objects;
-import java.util.Scanner;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
     String ip ="192.168.122.1";
@@ -40,17 +32,7 @@ public class MainActivity extends AppCompatActivity {
         oppkobling.start();
     }
 
-
-    public void testButt(View v) throws InterruptedException {
-
-        Log.i("Res", oppkobling.getRes());
-        //Toast.makeText(getBaseContext(),oppkobling.getRes(),Toast.LENGTH_LONG).show();
-        //oppkobling.sendReq("1 + 2");
-        //Toast.makeText(getBaseContext(),oppkobling.getRes(),Toast.LENGTH_LONG).show();
-        Toast.makeText(getBaseContext(),alternativ.getItemAtPosition(alternativ.getSelectedItemPosition()).toString(),Toast.LENGTH_LONG).show();
-    }
-
-    public void sendOppgave(View v){
+        public void sendOppgave(View v){
         try {
             resultat=(TextView)findViewById(R.id.res);
 
@@ -60,13 +42,16 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Oppgave: ",double_tall1+" "+opperator+" "+double_tall2);
             oppkobling.sendReq(double_tall1+" "+opperator+" "+double_tall2);
 
-
             update.post(new Runnable() {
                 @Override
                 public void run() {
-                    resultat.setText(oppkobling.getRes());
-                    Log.i("Res: ",oppkobling.getRes());
-
+                    try {
+                        Thread.sleep(100);
+                        resultat.setText(oppkobling.getRes());
+                        Log.i("Res: ",oppkobling.getRes());
+                    }catch (Exception e){
+                        Log.i("Exseption i  ","Post");
+                    }
                 }
             });
         }catch (Exception e){
@@ -77,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        //lokker tilkobling til server når man lokker programmet
         oppkobling.close();
+        super.onDestroy();
+
     }
 }

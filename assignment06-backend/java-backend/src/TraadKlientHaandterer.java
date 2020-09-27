@@ -7,7 +7,6 @@ import java.net.Socket;
 
 public class TraadKlientHaandterer extends Thread {
     private Socket forbindelse = null;
-
     public TraadKlientHaandterer(Socket forbindelse) throws IOException {
         this.forbindelse=forbindelse;
     }
@@ -22,13 +21,13 @@ public class TraadKlientHaandterer extends Thread {
 
             /* Sender innledning til klienten */
             System.out.println("Kontakt!!");
-            skriveren.println("Hei, velkommen til min enkle kalkulator");
-            skriveren.println("Vennligs skriv inn  <tall> <opperator> <tall>");
+           //skriveren.println("Hei, velkommen til min enkle kalkulator");
+            //skriveren.println("Vennligs skriv inn  <tall> <opperator> <tall>");
 
             /* Mottar data fra klienten */
             String enLinje = leseren.readLine();  // mottar en linje med tekst
-            while (enLinje != null) {  // forbindelsen på klientsiden er lukket
-                System.out.println("En klient skrev: " + enLinje);
+            while (enLinje != null && !enLinje.equals("close")) {  // forbindelsen på klientsiden er lukket
+                System.out.println("Klient "+ this.getId() +" skrev: " + enLinje);
                 String oppgave[]=enLinje.split(" ");
 
                 switch (oppgave[1]){
@@ -54,12 +53,17 @@ public class TraadKlientHaandterer extends Thread {
                 enLinje = leseren.readLine();
             }
             /* Lukker forbindelsen */
-            System.out.println("Klienten har lokket forbindelsen");
+            System.out.println("Klienten "+this.getId()+" har lokket forbindelsen");
             leseren.close();
             skriveren.close();
             forbindelse.close();
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.getCause());
+            System.out.println(e.getClass());
+            System.out.println(e.getLocalizedMessage());
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace()[0].getLineNumber());
+
         }
 
     }
