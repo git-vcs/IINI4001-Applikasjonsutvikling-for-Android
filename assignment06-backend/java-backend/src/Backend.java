@@ -13,8 +13,7 @@ class Backend {
             // venter inntil noen tar kontakt
             Socket forbindelse = tjener.accept();
             TraadKlientHaandterer traad=new TraadKlientHaandterer(forbindelse);
-            traad.start();
-        }
+            traad.start();        }
     }
 }
 
