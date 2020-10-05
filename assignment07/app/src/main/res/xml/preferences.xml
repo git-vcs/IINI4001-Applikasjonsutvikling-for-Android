@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference
+        android:key="Pref1"
+        android:title="checbox preference"
+        android:defaultValue="false"/>
+
+    <ListPreference
+        android:key="@string/current_color"
+        android:title="Dette er en liste"
+        android:defaultValue="@string/default_collor_valiue"
+        android:entries="@array/farger"
+        android:entryValues="@array/fargekoder"
+        android:summary="Trykk på og velg ny bakgrundsfarge på hovedisden."
+        />
+
+
+</PreferenceScreen>

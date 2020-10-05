@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    android:id="@+id/toolbar"
+    android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:orderInCategory="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Dette er en test"
+            />
+
+        <ImageView
+            android:id="@+id/farger"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:contentDescription="FargerSettings"
+            android:onClick="settings"
+            android:orderInCategory="100"
+            android:src="@drawable/ic_action_color"
+            app:showAsAction="ifRoom" />
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.appcompat.widget.Toolbar>

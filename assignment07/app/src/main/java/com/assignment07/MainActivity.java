@@ -1,8 +1,23 @@
 package com.assignment07;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.preference.PreferenceManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,6 +27,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
+    Toolbar toolbar;
     private DatabaseManager db;
 String data[]={
         "Bud Kurniawan","Android Application Development: A Beginners Tutorioal",
@@ -26,7 +42,37 @@ ArrayList<String> lestFil;
         setContentView(R.layout.activity_main);
         makeDataFile("test");
         readFiles("test");
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         writeToDataBase();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String selectedColor=sharedPreferences.getString(getString(R.string.current_color),"#FFfcfcfc");
+        ConstraintLayout constraintLayout= (ConstraintLayout) findViewById(R.id.activity_main);
+        if (constraintLayout!=null){
+            constraintLayout.setBackgroundColor(Color.parseColor(selectedColor));
+
+        }else Log.i("main", "onCreate: layout=NULL!!!!");
+
+
+
+
+    }
+
+
+    @SuppressLint("ResourceType")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+
+    }
+
+    public void settings(View v){
+       //
+        // setContentView(R.layout.activity_settings,settingsActivity.class);
+
+        startActivity(new Intent(this,settingsActivity.class));
+
     }
 
     private void makeDataFile(String fileName){
@@ -42,6 +88,22 @@ ArrayList<String> lestFil;
             Log.i("Exseption skriving: ",e.getMessage());
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.i("onOptionsItemSelected", (String.valueOf(item.getItemId())));
+        switch (item.getItemId()){
+            case R.id.activity_settings:
+
+                startActivity(new Intent(getApplicationContext(),settingsActivity.class));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+
+        }
     }
 
     private void readFiles(String fileName){

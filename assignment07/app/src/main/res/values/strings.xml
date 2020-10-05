@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Assignment07</string>
+
+
+    <string-array name="settigns">
+        <item>Farger</item>
+        <item>Visning</item>
+    </string-array>
+    <string name="default_collor">Hvit</string>
+    <string-array name="farger">
+        <item>Rød</item>
+        <item>Gul</item>
+        <item>Grøn</item>
+        <item>@string/default_collor</item>
+    </string-array>
+    <string name="current_color">backgroundColor</string>
+    <string name="default_collor_valiue">#FFfcfcfc</string>
+    <string-array name="fargekoder">
+        <item>#FFef1313</item>
+        <item>#FFebfc05</item>
+        <item>#FF2afc05</item>
+        <item>@string/default_collor_valiue</item>
+    </string-array>
 </resources>
