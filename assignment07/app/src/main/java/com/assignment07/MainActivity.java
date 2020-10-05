@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -53,19 +54,31 @@ ArrayList<String> lestFil;
 
         }else Log.i("main", "onCreate: layout=NULL!!!!");
 
+        ArrayList<String> res = db.getAllBooks();
+        showResults(res);
+
 
 
 
     }
 
 
-    @SuppressLint("ResourceType")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         return true;
 
     }
+
+    public void showResults(ArrayList<String> list) {
+        StringBuffer res = new StringBuffer("");
+        for (String s : list)  {
+            res.append(s+"\n");
+        }
+        TextView t = (TextView)findViewById(R.id.main_tekst);
+        t.setText(res);
+    }
+
 
     public void settings(View v){
        //
