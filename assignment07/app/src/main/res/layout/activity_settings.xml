@@ -7,7 +7,6 @@
     tools:context=".settingsActivity"
     android:orientation="vertical"
     android:id="@+id/activity_settings"
-    android:background="@color/colorAccent"
     >
     <include layout="@layout/tollbar"/>
     <FrameLayout

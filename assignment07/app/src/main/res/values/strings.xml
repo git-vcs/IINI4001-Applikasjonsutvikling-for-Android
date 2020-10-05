@@ -2,10 +2,6 @@
     <string name="app_name">Assignment07</string>
 
 
-    <string-array name="settigns">
-        <item>Farger</item>
-        <item>Visning</item>
-    </string-array>
     <string name="default_collor">Hvit</string>
     <string-array name="farger">
         <item>Rød</item>
@@ -21,4 +17,20 @@
         <item>#FF2afc05</item>
         <item>@string/default_collor_valiue</item>
     </string-array>
+
+    <string-array name="settings_visning">
+        <item>Vist alt</item>
+        <item>Vist alle forfattere</item>
+        <item>Vis alle bøker</item>
+    </string-array>
+    <string name="default_settings_visning_codes">0</string>
+    <string name="current_settings_visning_codes">0</string>
+    <string-array name="settings_visning_codes">
+        <item>@string/default_settings_visning_codes</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
+
 </resources>

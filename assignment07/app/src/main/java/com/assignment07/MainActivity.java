@@ -2,24 +2,18 @@ package com.assignment07;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -36,16 +30,27 @@ String data[]={
         "Else Lervik", "Programmering i C++",
         "Mildrid Ljosland", "Algoritmer og datastrukturer",
         "Helge Hafting", "Algoritmer og datastrukturer"};
+
 ArrayList<String> lestFil;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        makeDataFile("test");
+        readFiles("test");
+        writeToDataBase();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        makeDataFile("test");
-        readFiles("test");
+
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        writeToDataBase();
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String selectedColor=sharedPreferences.getString(getString(R.string.current_color),"#FFfcfcfc");
         ConstraintLayout constraintLayout= (ConstraintLayout) findViewById(R.id.activity_main);
@@ -53,15 +58,44 @@ ArrayList<String> lestFil;
             constraintLayout.setBackgroundColor(Color.parseColor(selectedColor));
 
         }else Log.i("main", "onCreate: layout=NULL!!!!");
+        onResume();
+    }
 
-        ArrayList<String> res = db.getAllBooks();
-        showResults(res);
+    @Override
+    protected void onResume() {
+        ArrayList<String> res =null;
+                super.onResume();
+        try {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            Log.i("main onRsume", "Current setting: "+ sharedPreferences.getString(getString(R.string.current_settings_visning_codes),"-1"));
+            db = new DatabaseManager(getBaseContext());
+            switch (sharedPreferences.getString(getString(R.string.current_settings_visning_codes),"0")){
+
+                case "0":
+                    //vis all info
+                    res = db.getAllBooksAndAuthors();
+                    break;
+                case "1":
+                    // vis alle forfattere
+                    res = db.getAllAuthors();
+                    break;
+                case "2":
+                    //vis alle bøker
+                    res=db.getAllBooks();
+                    break;
 
 
+            }
+           showResults(res);
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

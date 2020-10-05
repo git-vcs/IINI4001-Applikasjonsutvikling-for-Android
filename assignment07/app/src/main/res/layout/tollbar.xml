@@ -7,29 +7,37 @@
     android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
 
     >
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
+
         <TextView
-            android:orderInCategory="1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Dette er en test"
-            />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:orderInCategory="1"
+            android:text="Øving 7"
+            android:textColor="#FFfcfcfc"
+            android:textSize="35sp" />
 
         <ImageView
             android:id="@+id/farger"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:contentDescription="FargerSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:contentDescription="Settings"
             android:onClick="settings"
-            android:orderInCategory="100"
-            android:src="@drawable/ic_action_color"
+            android:src="@drawable/ic_action_settings"
             app:showAsAction="ifRoom" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
