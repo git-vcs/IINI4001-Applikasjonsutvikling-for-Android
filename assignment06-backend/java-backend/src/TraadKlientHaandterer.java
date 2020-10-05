@@ -18,12 +18,7 @@ public class TraadKlientHaandterer extends Thread {
             InputStreamReader leseforbindelse = new InputStreamReader(forbindelse.getInputStream());
             BufferedReader leseren = new BufferedReader(leseforbindelse);
             PrintWriter skriveren = new PrintWriter(forbindelse.getOutputStream(), true);
-
-            /* Sender innledning til klienten */
             System.out.println("Kontakt!!");
-           //skriveren.println("Hei, velkommen til min enkle kalkulator");
-            //skriveren.println("Vennligs skriv inn  <tall> <opperator> <tall>");
-
             /* Mottar data fra klienten */
             String enLinje = leseren.readLine();  // mottar en linje med tekst
             while (enLinje != null && !enLinje.equals("close")) {  // forbindelsen på klientsiden er lukket
@@ -49,7 +44,6 @@ public class TraadKlientHaandterer extends Thread {
                         break;
 
                 }
-                //skriveren.println(enLinje);  // sender svar til klienten
                 enLinje = leseren.readLine();
             }
             /* Lukker forbindelsen */

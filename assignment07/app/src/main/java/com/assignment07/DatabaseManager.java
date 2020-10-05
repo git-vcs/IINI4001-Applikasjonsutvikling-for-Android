@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import java.util.ArrayList;
-
+// fra eksempel-kode til tilhørende leksjon
 public class DatabaseManager  extends SQLiteOpenHelper {
     static final String TABLE_AUTHOR = "author";
     static final String TABLE_TITLE = "book";

@@ -7,26 +7,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
-// PreferenceActivity
+
 public class settingsActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(this.getClass().getSimpleName(),"OnCreate");
         setContentView(R.layout.activity_settings);
-        toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("test fra settings activity");
         if(findViewById(R.id.fragment_settings)!=null){
             if(savedInstanceState!=null){
                 return;
 
             }else Log.i(this.getClass().getSimpleName(), "onCreate: fant ikke savednstance");
+            //legger til fragmentet med innstillingene.
             getFragmentManager().beginTransaction().add(R.id.fragment_settings,new SettingsFragment()).commit();
 
         }else Log.i(this.getClass().getSimpleName(), "onCreate: fant ikke fragment_settings");
@@ -54,7 +50,8 @@ public class settingsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Log.i(this.getClass().getSimpleName(),"onBackPressed");
+        // går tilbake til startsiden
         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-
+        finish();
     }
 }

@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -19,6 +18,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+/*
+    PreferenceScreen og innstillinger i denne øvingen er innspirert av følgende videoer
+    https://www.youtube.com/watch?v=SfeRakSWWbk
+    https://www.youtube.com/watch?v=buFD0HI2F14
+ */
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,9 +54,6 @@ ArrayList<String> lestFil;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String selectedColor=sharedPreferences.getString(getString(R.string.current_color),"#FFfcfcfc");
         ConstraintLayout constraintLayout= (ConstraintLayout) findViewById(R.id.activity_main);
@@ -58,13 +61,14 @@ ArrayList<String> lestFil;
             constraintLayout.setBackgroundColor(Color.parseColor(selectedColor));
 
         }else Log.i("main", "onCreate: layout=NULL!!!!");
-        onResume();
     }
 
     @Override
     protected void onResume() {
         ArrayList<String> res =null;
                 super.onResume();
+
+                //henter data fra database
         try {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             Log.i("main onRsume", "Current setting: "+ sharedPreferences.getString(getString(R.string.current_settings_visning_codes),"-1"));
@@ -97,13 +101,7 @@ ArrayList<String> lestFil;
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        return true;
-
-    }
-
+    //metoden som forandrer listen av bøker
     public void showResults(ArrayList<String> list) {
         StringBuffer res = new StringBuffer("");
         for (String s : list)  {
@@ -115,13 +113,10 @@ ArrayList<String> lestFil;
 
 
     public void settings(View v){
-       //
-        // setContentView(R.layout.activity_settings,settingsActivity.class);
-
         startActivity(new Intent(this,settingsActivity.class));
-
     }
 
+    //lager en fil lokalt
     private void makeDataFile(String fileName){
        File dir=getFilesDir();
         File file=new File(dir,fileName);
@@ -148,11 +143,11 @@ ArrayList<String> lestFil;
 
             default:
                 return super.onOptionsItemSelected(item);
-
-
         }
     }
 
+
+    //leser fra lokal fil
     private void readFiles(String fileName){
         try {
             lestFil= new ArrayList<String>();
@@ -186,10 +181,6 @@ ArrayList<String> lestFil;
                     db.insert(enLinje[0],enLinje[1]);
                 }else throw tableSizeExseption;
             }
-
-
-
-
 
         }catch (Exception e){
             Log.i("writeToDataBase",e.getMessage());

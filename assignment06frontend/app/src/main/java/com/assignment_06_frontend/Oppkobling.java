@@ -1,5 +1,4 @@
 package com.assignment_06_frontend;
-import android.app.Activity;
 import android.util.Log;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,7 +6,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Oppkobling extends Thread {
-    private Activity activity;
     private static String URL;
     private static int PORT;
     private String res="";
