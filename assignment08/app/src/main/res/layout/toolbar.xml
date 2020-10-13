@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    android:id="@+id/toolbar"
+    android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:orderInCategory="1"
+            android:text="Øving 8 sudoku"
+            android:textColor="#FFfcfcfc"
+            android:textSize="35sp" />
+
+        <ImageView
+            android:id="@+id/farger"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:contentDescription="Settings"
+            android:onClick="settings"
+            android:src="@drawable/ic_launcher_foreground"
+            app:showAsAction="ifRoom" />
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.appcompat.widget.Toolbar>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ListPreference
+        android:icon="@drawable/ic_launcher_foreground"
+        android:key="@string/current_color"
+        android:title="Bakgrundsfarge"
+        android:defaultValue="@string/default_collor_valiue"
+        android:entries="@array/farger"
+        android:entryValues="@array/fargekoder"
+        android:summary="Trykk på og velg ny bakgrundsfarge på hovedisden."
+        />
+
+    <ListPreference
+        android:icon="@drawable/ic_launcher_foreground"
+
+        android:key="@string/current_settings_visning_codes"
+        android:title="Visningsinstliinger"
+        android:defaultValue="@string/default_settings_visning_codes"
+        android:entries="@array/settings_visning"
+        android:entryValues="@array/settings_visning_codes"
+        android:summary="Trykk på og velg ny bakgrundsfarge på hovedisden."
+        />
+
+</PreferenceScreen>
