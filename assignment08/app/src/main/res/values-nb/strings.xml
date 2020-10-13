@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Assignment08-sudoku</string>
 
@@ -16,9 +17,8 @@
         <item>#FF2afc05</item>
         <item>@string/default_collor_valiue</item>
     </string-array>
-
-    <string name="language_titel">Default_language</string>
-    <string name="language_settings_summary">Default</string>
+    <string name="language_titel">Språk</string>
+    <string name="language_settings_summary">Press for å skifte språk</string>
     <string name="default_language">Norsk</string>
     <string-array name="language">
         <item>@string/default_language</item>

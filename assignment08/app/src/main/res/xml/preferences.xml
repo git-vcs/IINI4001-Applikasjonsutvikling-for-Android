@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ListPreference
         android:icon="@drawable/ic_launcher_foreground"
-        android:key="@string/current_color"
-        android:title="Bakgrundsfarge"
-        android:defaultValue="@string/default_collor_valiue"
-        android:entries="@array/farger"
-        android:entryValues="@array/fargekoder"
-        android:summary="Trykk på og velg ny bakgrundsfarge på hovedisden."
+        android:key="@string/current_language"
+        android:title="@string/language_titel"
+        android:defaultValue="@string/default_language_code"
+        android:entries="@array/language"
+        android:entryValues="@array/language_code"
+        android:summary="@string/language_settings_summary"
         />
 
     <ListPreference
