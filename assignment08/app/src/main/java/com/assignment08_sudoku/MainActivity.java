@@ -31,7 +31,10 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
-
+    //metode for å teste vies som ikke er helt imlementert enda
+    public void testButton(View v){
+        startActivity(new Intent(this,GridActivity.class));
+    }
 
     @Override
     protected void onStart() {
@@ -47,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
         String selectedColor=sharedPreferences.getString(getString(R.string.current_color),"#FFfcfcfc");
         ConstraintLayout constraintLayout= (ConstraintLayout) findViewById(R.id.activity_main);
         if (constraintLayout!=null){
-            constraintLayout.setBackgroundColor(Color.parseColor(selectedColor));
+            //constraintLayout.setBackgroundColor(Color.parseColor(selectedColor));
 
         }else Log.i("main", "onCreate: layout=NULL!!!!");
+    }
+
+    public void oneStartGame(View v) {
+        setContentView(R.layout.activity_difficultselect);
     }
 
     @Override

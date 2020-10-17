@@ -45,6 +45,17 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string name="start_button_title">Start</string>
+    <string name="title_screen_message">Sudoku spill</string>
+    <string name="Difficult_buttonTitle01">Lett</string>
+    <string name="Difficult_buttonTitle02">Middels</string>
+    <string name="Difficult_buttonTitle03">Vanskligst</string>
+    <string name="Difficult_text01">Dette er en beskrivelse til det lette alternativet</string>
+    <string name="Difficult_text02">Dette er en beskrivelse til det middelste alternativet</string>
+    <string name="Difficult_text03">Dette er en beskrivelse til det vanskeligste alternativet</string>
+    <string name="gridXsize">40dp</string>
+    <string name="gridYsize">40dp</string>
+    <string name="buttonVlidate">Sjekk</string>
 
 
 </resources>

@@ -32,7 +32,6 @@
     </string-array>
 
 
-
     <string-array name="settings_visning">
         <item>Vist alt</item>
         <item>Vist alle forfattere</item>
@@ -45,6 +44,19 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string name="start_button_title">Start</string>
+    <string name="title_screen_message">Sudoku game</string>
+    <string name="Difficult_buttonTitle01">Easy</string>
+    <string name="Difficult_buttonTitle02">mid</string>
+    <string name="Difficult_buttonTitle03">Hard</string>
+    <string name="Difficult_text01">Easy Texst</string>
+    <string name="Difficult_text02">Mid</string>
+    <string name="Difficult_text03">Hard</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gridXsize">40dp</string>
+    <string name="gridYsize">40dp</string>
+    <string name="buttonVlidate">todo buttonValidate</string>
 
 
 </resources>
