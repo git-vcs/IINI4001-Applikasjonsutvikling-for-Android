@@ -2,20 +2,15 @@ package com.assignment08_sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-
-
 import androidx.gridlayout.widget.GridLayout;
 import android.widget.EditText;
-import android.widget.TextView;
-
 import java.util.ArrayList;
+
 
 public class GridActivity extends AppCompatActivity {
     // the sum of a line, row or tile in sudoku
@@ -24,6 +19,12 @@ public class GridActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent=getIntent();
+        try {
+           data=(ArrayList<int[]>) intent.getExtras().get("board");
+        }catch (Exception e){
+            Log.i(getLocalClassName(), e.getMessage());
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
        loadBoard();
@@ -53,15 +54,7 @@ public class GridActivity extends AppCompatActivity {
     private void loadBoard(){
 
         //sovled eksample
-        data.add(new int[]{9,6,8,1,3,5,2,4,7});
-        data.add(new int[]{1,3,7,8,4,2,9,5,6});
-        data.add(new int[]{4,2,5,9,6,7,3,8,1});
-        data.add(new int[]{7,8,2,6,1,3,4,9,5});
-        data.add(new int[]{3,1,4,5,9,8,7,6,2});
-        data.add(new int[]{5,9,6,2,7,4,8,1,3});
-        data.add(new int[]{8,7,9,3,5,1,6,2,4});
-        data.add(new int[]{6,4,1,7,2,9,5,3,8});
-        data.add(new int[]{2,5,3,4,8,6,1,7,9});
+
 
 
 
