@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GridActivity"></activity>
-        <activity android:name=".difficultselect" />
+        <activity android:name=".boardList"></activity>
+        <activity android:name=".GridActivity" />
+        <activity android:name=".DifficultSelect" />
         <activity android:name=".settingsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

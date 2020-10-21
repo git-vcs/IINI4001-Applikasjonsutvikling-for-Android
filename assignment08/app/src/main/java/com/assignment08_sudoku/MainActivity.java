@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,15 +33,25 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
+    DatabaseManager db;
     //metode for å teste vies som ikke er helt imlementert enda
     ArrayList<int[]> data=new ArrayList<>();
 
 
     public void testButton(View v){
-        //startActivity(new Intent(this,GridActivity.class));
-        Intent intent =new Intent(this,GridActivity.class);
-        intent.putExtra("board",data);
-        startActivityForResult(intent,1);
+        try {
+            DatabaseManager db = new DatabaseManager(getBaseContext());
+            db.clean();
+            //db.insertTestData();
+            ArrayList<String> res = db.gettest();
+            Log.i("TEST",res.size()+"");
+            db.listNames(1);
+
+        }catch (Exception e){
+            Log.i("TEST",e.getMessage());
+            e.printStackTrace();
+
+        }
 
     }
 
@@ -51,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            db=new DatabaseManager(getBaseContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         data.add(new int[]{9,6,8,1,3,5,2,4,7});
         data.add(new int[]{1,3,7,8,4,2,9,5,6});
         data.add(new int[]{4,2,5,9,6,7,3,8,1});
@@ -73,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void oneStartGame(View v) {
-        setContentView(R.layout.activity_difficultselect);
+        startActivity(new Intent(getApplicationContext(),DifficultSelect.class));
     }
 
     @Override
@@ -205,8 +221,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     */
-
-
 
 
 

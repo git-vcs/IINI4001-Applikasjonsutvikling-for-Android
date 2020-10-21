@@ -50,7 +50,9 @@
         android:layout_marginTop="60dp"
         android:text="@string/Difficult_buttonTitle01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="easyList"
+        />
 
     <TextView
         android:id="@+id/textView1"

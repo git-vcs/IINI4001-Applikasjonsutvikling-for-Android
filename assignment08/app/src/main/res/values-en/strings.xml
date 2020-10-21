@@ -56,6 +56,8 @@
     <string name="gridXsize">40dp</string>
     <string name="gridYsize">40dp</string>
     <string name="buttonVlidate">todo buttonValidate</string>
+    <string name="buttonBack">go back</string>
+    <string name="buttonStart">start</string>
 
 
 </resources>
