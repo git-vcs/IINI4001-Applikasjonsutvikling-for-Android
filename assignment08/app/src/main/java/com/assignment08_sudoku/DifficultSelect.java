@@ -12,6 +12,7 @@ public class DifficultSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficultselect);
+
     }
 
     public void easyList(View v){
@@ -19,6 +20,20 @@ public class DifficultSelect extends AppCompatActivity {
         intent.putExtra("difficulty",1);
         startActivityForResult(intent,1);
     }
+
+    public void midList(View v){
+        Intent intent =new Intent(this,boardList.class);
+        intent.putExtra("difficulty",2);
+        startActivityForResult(intent,1);
+    }
+
+    public void hardList(View v){
+        Intent intent =new Intent(this,boardList.class);
+        intent.putExtra("difficulty",3);
+        startActivityForResult(intent,1);
+    }
+
+
 
 
 

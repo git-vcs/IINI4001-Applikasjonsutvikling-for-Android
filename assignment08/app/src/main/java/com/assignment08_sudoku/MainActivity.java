@@ -34,18 +34,36 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DatabaseManager db;
-    //metode for å teste vies som ikke er helt imlementert enda
-    ArrayList<int[]> data=new ArrayList<>();
+
+
 
 
     public void testButton(View v){
         try {
-            DatabaseManager db = new DatabaseManager(getBaseContext());
-            db.clean();
-            //db.insertTestData();
-            ArrayList<String> res = db.gettest();
-            Log.i("TEST",res.size()+"");
-            db.listNames(1);
+    
+            try {
+                DatabaseManager db = new DatabaseManager(getBaseContext());
+                db.clean();
+                data.add(new int[]{9,6,8,1,3,5,2,4,7});
+                data.add(new int[]{1,3,7,8,4,2,9,5,6});
+                data.add(new int[]{4,2,5,9,6,7,3,8,1});
+                data.add(new int[]{7,8,2,6,1,3,4,9,5});
+                data.add(new int[]{3,1,4,5,9,8,7,6,2});
+                data.add(new int[]{5,9,6,2,7,4,8,1,3});
+                data.add(new int[]{8,7,9,3,5,1,6,2,4});
+                data.add(new int[]{6,4,1,7,2,9,5,3,8});
+                data.add(new int[]{2,5,3,4,8,6,1,7,9});
+
+                db.insertBoard(data,"Lett brett");
+                //db.insertTestData();
+                ArrayList<String> res = db.gettest();
+                Log.i("TEST",res.size()+"");
+                db.listNames(1);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 
         }catch (Exception e){
             Log.i("TEST",e.getMessage());
@@ -57,26 +75,40 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        ArrayList<int[]> data=new ArrayList<>();
         super.onStart();
+        Log.i(getLocalClassName(),"onStart");
+        try {
+            DatabaseManager db = new DatabaseManager(getBaseContext());
+            db.clean();
+            data.add(new int[]{-1,6,8,1,3,5,2,4,7});
+            data.add(new int[]{1,3,7,8,4,2,9,5,6});
+            data.add(new int[]{4,2,5,9,6,7,3,8,1});
+            data.add(new int[]{7,8,2,6,1,3,4,9,5});
+            data.add(new int[]{3,1,4,5,9,8,7,6,2});
+            data.add(new int[]{5,9,6,2,7,4,8,1,3});
+            data.add(new int[]{8,7,9,3,5,1,6,2,4});
+            data.add(new int[]{6,4,1,7,2,9,5,3,8});
+            data.add(new int[]{2,5,3,4,8,6,1,7,9});
+
+            db.insertBoard(data,"Lett brett");
+            db.insertBoard(data,"Samme brett");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
-            db=new DatabaseManager(getBaseContext());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        data.add(new int[]{9,6,8,1,3,5,2,4,7});
-        data.add(new int[]{1,3,7,8,4,2,9,5,6});
-        data.add(new int[]{4,2,5,9,6,7,3,8,1});
-        data.add(new int[]{7,8,2,6,1,3,4,9,5});
-        data.add(new int[]{3,1,4,5,9,8,7,6,2});
-        data.add(new int[]{5,9,6,2,7,4,8,1,3});
-        data.add(new int[]{8,7,9,3,5,1,6,2,4});
-        data.add(new int[]{6,4,1,7,2,9,5,3,8});
-        data.add(new int[]{2,5,3,4,8,6,1,7,9});
         super.onCreate(savedInstanceState);
+
+
+
+
+
+
 
         setContentView(R.layout.activity_main);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);

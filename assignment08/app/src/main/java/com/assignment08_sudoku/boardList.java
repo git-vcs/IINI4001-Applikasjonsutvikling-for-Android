@@ -4,16 +4,54 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class boardList extends AppCompatActivity {
-    ArrayList<int []> data = new ArrayList<>();
+
+    private int difficulty=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);;
         setContentView(R.layout.activity_board_list);
+        try {
+            DatabaseManager db=new DatabaseManager(getBaseContext());
+            Intent intent=getIntent();
+            Log.i(getLocalClassName(),"onCreate difficulty: "+intent.getExtras().get("difficulty"));
+           difficulty= Integer.parseInt(intent.getExtras().get("difficulty").toString());
+           Log.i(getLocalClassName(),"onCreate difficulty: "+intent.getExtras().get("difficulty"));
+            ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_activated_1);
+            ArrayList<String[]> listNames=db.listNames(difficulty);
+            for (int i = 0; i <listNames.size() ; i++) {
+                adapter.add(listNames.get(i)[1]);
+            }
+            adapter.add("Legg til et brett");
+           final ListView listView=(ListView)(findViewById(R.id.boardlist));
+           listView.setAdapter(adapter);
+           listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+           listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> adapterView, View view, int id, long l) {
+                    //legger til navnet til brettet som en extra intent
+                   Log.i(getLocalClassName(),"id: "+id+" "+adapterView.getItemAtPosition(id));
+                   Intent intent1=getIntent();
+                   intent1.putExtra("boardname",(String)adapterView.getItemAtPosition(id));
+
+               }
+           });
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -22,19 +60,29 @@ public class boardList extends AppCompatActivity {
     }
 
     public void launchBoard(View view){
-        data.add(new int[]{9,6,8,1,3,5,2,4,7});
-        data.add(new int[]{1,3,7,8,4,2,9,5,6});
-        data.add(new int[]{4,2,5,9,6,7,3,8,1});
-        data.add(new int[]{7,8,2,6,1,3,4,9,5});
-        data.add(new int[]{3,1,4,5,9,8,7,6,2});
-        data.add(new int[]{5,9,6,2,7,4,8,1,3});
-        data.add(new int[]{8,7,9,3,5,1,6,2,4});
-        data.add(new int[]{6,4,1,7,2,9,5,3,8});
-        data.add(new int[]{2,5,3,4,8,6,1,7,9});
-        Intent intent =new Intent(this,GridActivity.class);
-        intent.putExtra("board",data);
-        startActivityForResult(intent,1);
-
+        ArrayList<String> board;
+        try {
+            Intent intetnt=getIntent();
+            DatabaseManager db = new DatabaseManager(getBaseContext());
+            //hetner brettet fra databsen
+            board = db.getBoard(difficulty, intetnt.getExtras().get("boardname").toString());
+            int pointer=0;
+            ArrayList<int []> data = new ArrayList<>();
+            for (int y = 0; y <9 ; y++) {
+                int[] row=new int[9];
+                for (int x = 0; x <9 ; x++) {
+                    row[x] = Integer.parseInt(board.get(pointer));
+                    pointer++;
+                }
+                data.add(row);
+            }
+            //åpner brette
+            Intent intent =new Intent(this,GridActivity.class);
+            intent.putExtra("board",data);
+            startActivityForResult(intent,1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

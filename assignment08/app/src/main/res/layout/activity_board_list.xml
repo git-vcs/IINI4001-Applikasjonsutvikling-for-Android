@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".boardList">
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+
+    <ListView
+        android:id="@+id/boardlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+
+        >
+
+
+    </ListView>
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
@@ -30,8 +41,5 @@
         android:onClick="backButton"
         />
 
-    <ListView
-        android:layout_width="413dp"
-        android:layout_height="626dp"
-        tools:layout_editor_absoluteX="-2dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
