@@ -13,7 +13,9 @@
         android:layout_marginTop="25dp"
         android:text="@string/Difficult_buttonTitle03"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:onClick="hardList"
+        />
 
     <TextView
         android:id="@+id/textView3"

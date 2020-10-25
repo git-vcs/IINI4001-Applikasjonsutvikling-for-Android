@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
 
 /*
@@ -42,23 +43,7 @@ public class MainActivity extends AppCompatActivity {
         try {
     
             try {
-                DatabaseManager db = new DatabaseManager(getBaseContext());
-                db.clean();
-                data.add(new int[]{9,6,8,1,3,5,2,4,7});
-                data.add(new int[]{1,3,7,8,4,2,9,5,6});
-                data.add(new int[]{4,2,5,9,6,7,3,8,1});
-                data.add(new int[]{7,8,2,6,1,3,4,9,5});
-                data.add(new int[]{3,1,4,5,9,8,7,6,2});
-                data.add(new int[]{5,9,6,2,7,4,8,1,3});
-                data.add(new int[]{8,7,9,3,5,1,6,2,4});
-                data.add(new int[]{6,4,1,7,2,9,5,3,8});
-                data.add(new int[]{2,5,3,4,8,6,1,7,9});
 
-                db.insertBoard(data,"Lett brett");
-                //db.insertTestData();
-                ArrayList<String> res = db.gettest();
-                Log.i("TEST",res.size()+"");
-                db.listNames(1);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -81,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             DatabaseManager db = new DatabaseManager(getBaseContext());
             db.clean();
-            data.add(new int[]{-1,6,8,1,3,5,2,4,7});
+            data.add(new int[]{9,6,8,1,3,5,2,4,7});
             data.add(new int[]{1,3,7,8,4,2,9,5,6});
             data.add(new int[]{4,2,5,9,6,7,3,8,1});
             data.add(new int[]{7,8,2,6,1,3,4,9,5});
@@ -90,9 +75,36 @@ public class MainActivity extends AppCompatActivity {
             data.add(new int[]{8,7,9,3,5,1,6,2,4});
             data.add(new int[]{6,4,1,7,2,9,5,3,8});
             data.add(new int[]{2,5,3,4,8,6,1,7,9});
+            db.insertBoard(data,"Lett brett Ferdig",1);
 
-            db.insertBoard(data,"Lett brett");
-            db.insertBoard(data,"Samme brett");
+            data=new ArrayList<>();
+            data.add(new int[]{1,4,6,7,9,2,3,8,5});
+            data.add(new int[]{2,5,8,3,4,6,7,9,1});
+            data.add(new int[]{3,7,9,5,8,1,4,6,2});
+            data.add(new int[]{4,3,7,9,1,5,8,2,6});
+            data.add(new int[]{5,8,1,6,2,7,9,3,4});
+            data.add(new int[]{6,9,2,4,3,8,1,5,7});
+            data.add(new int[]{7,1,3,2,6,9,5,4,8});
+            data.add(new int[]{8,2,4,1,5,3,6,1,3});
+            data.add(new int[]{9,6,5,8,7,4,2,1,3});
+            db.insertBoard(data,"Middels brett Ferdig",2);
+
+            data=new ArrayList<>();
+            data.add(new int[]{8,2,7,1,5,4,3,9,6});
+            data.add(new int[]{9,6,5,3,2,7,1,4,8});
+            data.add(new int[]{3,4,1,6,8,9,7,5,2});
+            data.add(new int[]{5,9,3,4,6,8,2,7,1});
+            data.add(new int[]{4,7,2,5,1,3,6,8,9});
+            data.add(new int[]{6,1,8,9,7,2,4,3,5});
+            data.add(new int[]{7,8,6,2,3,5,9,1,4});
+            data.add(new int[]{1,5,4,7,9,6,8,2,3});
+            data.add(new int[]{2,3,9,8,4,1,5,6,7});
+            db.insertBoard(data,"Denne er anskelig Ferdig",3);
+
+
+
+
+
 
         } catch (Exception e) {
             e.printStackTrace();

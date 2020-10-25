@@ -59,13 +59,14 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 
     }
 
-    public void insertBoard(ArrayList<int[]> board,String navn){
+
+    public void insertBoard(ArrayList<int[]> board,String navn,int difficulty){
         //todo
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues input = new ContentValues();
         input.put("name",navn);
-        input.put("difficulty",1);
+        input.put("difficulty",difficulty);
         for (int y = 0; y < board.size(); y++) {
             for (int x = 0; x <board.get(y).length ; x++) {
                 input.put("_"+x+""+y,board.get(y)[x]);
