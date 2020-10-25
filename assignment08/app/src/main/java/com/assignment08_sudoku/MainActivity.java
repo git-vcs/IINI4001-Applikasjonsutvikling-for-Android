@@ -76,8 +76,21 @@ public class MainActivity extends AppCompatActivity {
             data.add(new int[]{6,4,1,7,2,9,5,3,8});
             data.add(new int[]{2,5,3,4,8,6,1,7,9});
             db.insertBoard(data,"Lett brett Ferdig",1);
+            data=new ArrayList<>();
+
+            data.add(new int[]{9,-1,8,1,3,5,2,4,7});
+            data.add(new int[]{1,3,7,8,4,2,9,5,6});
+            data.add(new int[]{4,2,-1,9,6,7,3,8,1});
+            data.add(new int[]{7,8,2,-1,1,3,4,9,5});
+            data.add(new int[]{3,1,-1,5,9,8,7,6,2});
+            data.add(new int[]{5,9,6,2,7,4,8,1,3});
+            data.add(new int[]{8,7,9,3,5,1,6,2,4});
+            data.add(new int[]{6,-1,1,7,2,9,5,3,8});
+            data.add(new int[]{2,5,3,4,8,6,1,7,9});
+            db.insertBoard(data,"Lett brett uløst",1);
 
             data=new ArrayList<>();
+
             data.add(new int[]{1,4,6,7,9,2,3,8,5});
             data.add(new int[]{2,5,8,3,4,6,7,9,1});
             data.add(new int[]{3,7,9,5,8,1,4,6,2});

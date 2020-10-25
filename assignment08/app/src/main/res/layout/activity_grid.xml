@@ -36,7 +36,7 @@
                 android:ems="10"
                 android:inputType="number"
                 android:text="-1"
-
+                android:clickable="true"
                 app:layout_column="0"
                 app:layout_row="0"
 

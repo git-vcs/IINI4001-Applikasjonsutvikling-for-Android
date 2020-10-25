@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import androidx.gridlayout.widget.GridLayout;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 
@@ -50,38 +54,11 @@ public class GridActivity extends AppCompatActivity {
 
     }
     
-    //todo lag innlesning av brett
+
     private void loadBoard(){
-
-        //sovled eksample
-
-
-
-
-
-
-
-
-        /*
-        data.add(new int[]{1,4,-1,5,-1,6,3,-1,-1});
-        data.add(new int[]{3,-1,-1,-1,-1,-1,-1,8,-1});
-        data.add(new int[]{9,8,2,4,1,3,-1,-1,-1});
-        data.add(new int[]{-1,-1,-1,8,-1,-1,-1,-1,9});
-        data.add(new int[]{-1,7,6,3,-1,-1,1,2,-1});
-        data.add(new int[]{8,-1,-1,-1,-1,1,2,-1,-1});
-        data.add(new int[]{-1,-1,-1,2,3,7,8,1,5});
-        data.add(new int[]{-1,5,-1,-1,-1,-1,-1,-1,6});
-        data.add(new int[]{-1,-1,8,6,-1,5,-1,3,4});
-
-
-         */
-
-
-
-
         GridLayout board=findViewById(R.id.sudokugrid);
         for (int i = 0; i <board.getChildCount(); i++) {
-            EditText oneTile=(EditText)board.getChildAt(i);
+            final EditText oneTile=(EditText)board.getChildAt(i);
             Log.i("laster data", " "+getResources().getResourceEntryName(oneTile.getId()).replaceAll("editTextNumber",""));
             char[] tempCharCoordinate=getResources().getResourceEntryName(oneTile.getId()).replaceAll("editTextNumber","").toCharArray();
             int[] yxCoordinate= {Integer.parseInt(tempCharCoordinate[0]+""),Integer.parseInt(tempCharCoordinate[1]+"")};
@@ -90,9 +67,26 @@ public class GridActivity extends AppCompatActivity {
             if (valiue.equals("-1")||valiue.equals("")){
                 oneTile.setText("");
                 oneTile.setEnabled(true);
+                oneTile.setClickable(true);
+                oneTile.setBackgroundColor(R.color.white);
+                oneTile.setOnLongClickListener(new View.OnLongClickListener(){
+                    @Override
+                    public boolean onLongClick(View view) {
+                        Toast.makeText(GridActivity.this, "Thiss is loooong  pres", Toast.LENGTH_SHORT).show();
+                        Log.i(getLocalClassName(),"LONGsquareClick");
+                        if(view.getSolidColor()==R.color.red){
+                            view.setBackgroundColor(R.color.white);
+                        }else {
+                            view.setBackgroundColor(R.color.red);
+                        }
+                        return true;
+                    }
+                });
+
             }else {
                 oneTile.setText(valiue);
                 oneTile.setEnabled(false);
+                oneTile.setBackgroundColor(R.color.white);
             }
         }
 
