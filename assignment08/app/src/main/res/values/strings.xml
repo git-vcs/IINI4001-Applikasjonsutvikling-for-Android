@@ -59,6 +59,8 @@
     <string name="buttonVlidate">todo buttonValidate</string>
     <string name="buttonBack">go back</string>
     <string name="buttonStart">start</string>
+    <string name="nuberError">Number Error TODO!!!</string>
+    <string name="correctSudoku">correctSudoku TODO !!!!!</string>
 
 
 </resources>

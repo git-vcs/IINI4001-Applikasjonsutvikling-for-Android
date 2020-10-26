@@ -58,6 +58,8 @@
     <string name="buttonVlidate">Sjekk</string>
     <string name="buttonBack">Tilbake</string>
     <string name="buttonStart">Start</string>
+    <string name="nuberError">Noe er feil i de røde rutene</string>
+    <string name="correctSudoku">Gratulerer du greide det!</string>
 
 
 </resources>

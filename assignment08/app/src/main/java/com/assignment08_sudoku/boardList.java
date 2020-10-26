@@ -21,6 +21,7 @@ public class boardList extends AppCompatActivity {
         super.onCreate(savedInstanceState);;
         setContentView(R.layout.activity_board_list);
         try {
+            //oppkoblink til sql-database for å hente en lista å brettnavn
             DatabaseManager db=new DatabaseManager(getBaseContext());
             Intent intent=getIntent();
             Log.i(getLocalClassName(),"onCreate difficulty: "+intent.getExtras().get("difficulty"));
