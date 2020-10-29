@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -54,7 +55,12 @@ public class settingsActivity extends AppCompatActivity {
         super.onBackPressed();
         Log.i(this.getClass().getSimpleName(),"onBackPressed");
         // går tilbake til startsiden
-        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+       // startActivity(new Intent(getApplicationContext(),MainActivity.class));
         finish();
+    }
+
+    public void settings(View v){
+        
+       // startActivity(new Intent(this,settingsActivity.class));
     }
 }

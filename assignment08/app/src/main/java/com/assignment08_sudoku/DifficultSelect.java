@@ -32,6 +32,9 @@ public class DifficultSelect extends AppCompatActivity {
         intent.putExtra("difficulty",2);
         startActivityForResult(intent,1);
     }
+    public void settings(View v){
+        startActivity(new Intent(this,settingsActivity.class));
+    }
 
 
 

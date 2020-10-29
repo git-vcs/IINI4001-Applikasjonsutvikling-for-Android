@@ -108,4 +108,8 @@ public class boardList extends AppCompatActivity {
 
 
     }
+
+    public void settings(View v){
+        startActivity(new Intent(this,settingsActivity.class));
+    }
 }

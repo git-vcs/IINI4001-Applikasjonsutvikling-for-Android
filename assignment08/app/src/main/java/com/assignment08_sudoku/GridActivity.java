@@ -208,7 +208,9 @@ public class GridActivity extends AppCompatActivity {
         return tiles;
 
     }
-
+    public void settings(View v){
+        startActivity(new Intent(this,settingsActivity.class));
+    }
     public void validate(View v){
         validateBoard();
     }
