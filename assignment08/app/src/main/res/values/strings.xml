@@ -53,7 +53,6 @@
     <string name="Difficult_text02">Mid</string>
     <string name="Difficult_text03">Hard</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="gridXsize">40dp</string>
     <string name="gridYsize">40dp</string>
     <string name="buttonVlidate">todo buttonValidate</string>
@@ -61,6 +60,18 @@
     <string name="buttonStart">start</string>
     <string name="nuberError">Number Error TODO!!!</string>
     <string name="correctSudoku">correctSudoku TODO !!!!!</string>
-
+    <string name="addBoard">addBoard TODO !!!!!</string>
+    <string name="buttonSave">Save</string>
+    <string name="name">Name</string>
+    <string-array name="difficultiesNumbers">
+        <item>@string/Difficult_buttonTitle01</item>
+        <item>@string/Difficult_buttonTitle02</item>
+        <item>@string/Difficult_buttonTitle03</item>
+    </string-array>
+    <string-array name="difficultiesSpinner">
+        <item>@string/Difficult_buttonTitle01</item>
+        <item>@string/Difficult_buttonTitle02</item>
+        <item>@string/Difficult_buttonTitle03</item>
+    </string-array>
 
 </resources>

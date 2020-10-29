@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             data.add(new int[]{8,7,9,3,5,1,6,2,4});
             data.add(new int[]{6,4,1,7,2,9,5,3,8});
             data.add(new int[]{2,5,3,4,8,6,1,7,9});
-            db.insertBoard(data,"Lett brett Ferdig",1);
+            db.insertBoard(data,"Lett brett Ferdig",0);
             data=new ArrayList<>();
 
             data.add(new int[]{9,-1,8,1,3,5,2,4,7});
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             data.add(new int[]{8,7,9,3,5,1,6,2,4});
             data.add(new int[]{6,-1,1,7,2,9,5,3,8});
             data.add(new int[]{2,5,3,4,8,6,1,7,9});
-            db.insertBoard(data,"Lett brett uløst",1);
+            db.insertBoard(data,"Lett brett uløst",0);
 
             data=new ArrayList<>();
 
@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
             data.add(new int[]{5,8,1,6,2,7,9,3,4});
             data.add(new int[]{6,9,2,4,3,8,1,5,7});
             data.add(new int[]{7,1,3,2,6,9,5,4,8});
-            data.add(new int[]{8,2,4,1,5,3,6,1,3});
+            data.add(new int[]{8,2,4,1,5,3,6,7,9});
             data.add(new int[]{9,6,5,8,7,4,2,1,3});
-            db.insertBoard(data,"Middels brett Ferdig",2);
+            db.insertBoard(data,"Middels brett Ferdig",1);
 
             data=new ArrayList<>();
             data.add(new int[]{8,2,7,1,5,4,3,9,6});
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             data.add(new int[]{7,8,6,2,3,5,9,1,4});
             data.add(new int[]{1,5,4,7,9,6,8,2,3});
             data.add(new int[]{2,3,9,8,4,1,5,6,7});
-            db.insertBoard(data,"Denne er anskelig Ferdig",3);
+            db.insertBoard(data,"Denne er VELDGI vanskelig Ferdig",2);
 
 
 

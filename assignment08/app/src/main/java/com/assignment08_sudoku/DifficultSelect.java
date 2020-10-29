@@ -17,19 +17,19 @@ public class DifficultSelect extends AppCompatActivity {
 
     public void easyList(View v){
         Intent intent =new Intent(this,boardList.class);
-        intent.putExtra("difficulty",1);
+        intent.putExtra("difficulty",0);
         startActivityForResult(intent,1);
     }
 
     public void midList(View v){
         Intent intent =new Intent(this,boardList.class);
-        intent.putExtra("difficulty",2);
+        intent.putExtra("difficulty",1);
         startActivityForResult(intent,1);
     }
 
     public void hardList(View v){
         Intent intent =new Intent(this,boardList.class);
-        intent.putExtra("difficulty",3);
+        intent.putExtra("difficulty",2);
         startActivityForResult(intent,1);
     }
 

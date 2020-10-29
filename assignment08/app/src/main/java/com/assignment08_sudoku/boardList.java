@@ -1,8 +1,11 @@
 package com.assignment08_sudoku;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,13 +15,15 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class boardList extends AppCompatActivity {
 
     private int difficulty=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);;
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_list);
         try {
             //oppkoblink til sql-database for å hente en lista å brettnavn
@@ -32,8 +37,8 @@ public class boardList extends AppCompatActivity {
             for (int i = 0; i <listNames.size() ; i++) {
                 adapter.add(listNames.get(i)[1]);
             }
-            adapter.add("Legg til et brett");
-           final ListView listView=(ListView)(findViewById(R.id.boardlist));
+
+            final ListView listView=(ListView)(findViewById(R.id.boardlist));
            listView.setAdapter(adapter);
            listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,6 +89,23 @@ public class boardList extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void addBoard(View v){
+        ArrayList<String> board;
+        try {
+            Intent intetnt=getIntent();
+            int pointer=0;
+            //åpner brette
+            Intent intent =new Intent(this,GridActivity.class);
+            intent.putExtra("newBorad",true);
+            startActivityForResult(intent,1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 }

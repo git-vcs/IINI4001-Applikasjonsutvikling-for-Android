@@ -12,8 +12,12 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import androidx.gridlayout.widget.GridLayout;
+
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,18 +28,25 @@ public class GridActivity extends AppCompatActivity {
     final int sudokuSum = 1+2+3+4+5+6+7+8+9;
     // data er et brett sudoku
     ArrayList<int[]> data = new ArrayList<int[]>();
+    Boolean newBoard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent=getIntent();
         try {
            data=(ArrayList<int[]>) intent.getExtras().get("board");
+           newBoard=intent.getBooleanExtra("newBoard",false);
         }catch (Exception e){
             Log.i(getLocalClassName(), e.getMessage());
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
-       loadBoard();
+        if(data!=null&& !newBoard){
+            loadBoard();
+        }else {
+            emptyBoard();
+        }
+
 
 
         //Debug print, printer xy-akse posisjon istedenfor tall
@@ -57,9 +68,41 @@ public class GridActivity extends AppCompatActivity {
 
 
     }
-    
+    private void emptyBoard(){
+        //gjemmer ting som har med å lage nytt brett
+        Spinner dropDown=(Spinner) findViewById(R.id.spinnerdifficulties);
+
+
+        ArrayAdapter<String> spinnerList=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,getResources().getStringArray(R.array.difficultiesSpinner));
+        dropDown.setAdapter(spinnerList);
+
+        GridLayout board=findViewById(R.id.sudokugrid);
+        Button sjekkButton=(Button)findViewById(R.id.buttonvalidate);
+        sjekkButton.setVisibility(Button.GONE);
+        for (int i = 0; i <board.getChildCount(); i++) {
+            EditText temp=(EditText)board.getChildAt(i);
+            //Log.i("laster data", " "+getResources().getResourceEntryName(temp.getId()).replaceAll("editTextNumber",""));
+            temp.setText("");
+            temp.setEnabled(true);
+        }
+        Log.i(getLocalClassName(), "emptyBoard: ");
+
+    }
 
     private void loadBoard(){
+        {
+            Spinner dropDown=(Spinner) findViewById(R.id.spinnerdifficulties);
+            dropDown.setEnabled(false);
+            dropDown.setVisibility(Spinner.GONE);
+            Button saveButton=findViewById(R.id.save);
+            saveButton.setEnabled(false);
+            saveButton.setVisibility(Button.GONE);
+            EditText editText = (EditText)findViewById(R.id.editName);
+            editText.setVisibility(EditText.GONE);
+        }
+
+
+
         GridLayout board=findViewById(R.id.sudokugrid);
         for (int i = 0; i <board.getChildCount(); i++) {
             final EditText oneTile=(EditText)board.getChildAt(i);
@@ -100,17 +143,55 @@ public class GridActivity extends AppCompatActivity {
 
     }
 
+    public void saveBoard(View v){
+        Log.i(getLocalClassName(),"saveBoard");
+        ArrayList<int[]> tiles = readBoardInt();
+        boolean succesfullSave=false;
+        try{
+            DatabaseManager databaseManager=new DatabaseManager(getBaseContext());
+            int difficulty=((Spinner)findViewById(R.id.spinnerdifficulties)).getSelectedItemPosition();
+            String name=((EditText)findViewById(R.id.editName)).getText().toString();
+            Log.i(getLocalClassName(),"saveBoard, navn: "+name+" diff: "+difficulty );
+            databaseManager.insertBoard(tiles,name,difficulty);
+        }catch (Exception e){
+            e.printStackTrace();
+            succesfullSave=false;
+        }
+        if(succesfullSave){
+           finish();
+        }else{
+            //todo Toast med feilmelding
+        }
 
-    public void validate(View v){
-        validateBoard();
     }
 
-    private void validateBoard(){
-        boolean block=true;
-        boolean columSum=true;
-        boolean rowSum=true;
-        boolean emptyTile=false;
-        //Laster tata fra brett og analyserer innholdet
+    private ArrayList<int[]> readBoardInt(){
+        //Laster dtata fra brett
+        ArrayList<int[]> tiles = new ArrayList<>();
+        GridLayout board=findViewById(R.id.sudokugrid);
+        int pointer=0;
+        for (int i = 0; i <9; i++) {
+            int[] temp=new int[9];
+            for (int j = 0; j < 9 ; j++) {
+                Log.d("valitade: ",i+" "+j);
+                try{
+                    //todo legg in jekk for tall større enn 9
+                    temp[j]=Integer.parseInt(((EditText)board.getChildAt(pointer)).getText().toString());
+                }catch (Exception e){
+                    //tom runte
+                    temp[j]=-1;
+                }
+                pointer++;
+            }
+            tiles.add(temp);
+
+        }
+        return tiles;
+    }
+
+
+    private ArrayList<EditText[]> readBoard(){
+        //Laster dtata fra brett
         ArrayList<EditText[]> tiles = new ArrayList<>();
         GridLayout board=findViewById(R.id.sudokugrid);
         int pointer=0;
@@ -124,6 +205,21 @@ public class GridActivity extends AppCompatActivity {
             tiles.add(temp);
 
         }
+        return tiles;
+
+    }
+
+    public void validate(View v){
+        validateBoard();
+    }
+
+    private void validateBoard(){
+        boolean block=true;
+        boolean columSum=true;
+        boolean rowSum=true;
+        boolean emptyTile=false;
+        //Laster dtata fra brett og analyserer innholdet
+        ArrayList<EditText[]> tiles = readBoard();
 
         // hvis vi går igjennom alle rader og finner feil er det ikke behov for å sjekke resten
         if(columSum&&rowSum){

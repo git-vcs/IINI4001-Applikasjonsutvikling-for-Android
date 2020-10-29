@@ -60,6 +60,9 @@
     <string name="buttonStart">start</string>
     <string name="nuberError">Number Error TODO!!!</string>
     <string name="correctSudoku">correctSudoku TODO !!!!!</string>
+    <string name="addBoard">addBoard TODO !!!!!</string>
+    <string name="buttonSave">Save</string>
+    <string name="name">Name</string>
 
 
 </resources>
