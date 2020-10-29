@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
     DatabaseManager db;
 
 
+    public void howTo(View v){
+        startActivity(new Intent(getApplicationContext(),Instructions.class));
+
+    }
 
 
     public void testButton(View v){

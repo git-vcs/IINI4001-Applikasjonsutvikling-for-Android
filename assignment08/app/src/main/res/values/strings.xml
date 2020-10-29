@@ -73,5 +73,6 @@
         <item>@string/Difficult_buttonTitle02</item>
         <item>@string/Difficult_buttonTitle03</item>
     </string-array>
+    <string name="howtoButton">How to?</string>
 
 </resources>
