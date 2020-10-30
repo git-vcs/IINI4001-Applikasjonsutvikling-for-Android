@@ -64,6 +64,7 @@
     <string name="buttonSave">Save</string>
     <string name="name">Name</string>
     <string name="howtoButton">How to</string>
+    <string name="mainhowto">todo main howto</string>
 
 
 </resources>
