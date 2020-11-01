@@ -28,7 +28,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 
     public DatabaseManager(Context context) throws Exception{
         super(context,DATABASE_NAME,null,VERSION);
-        Toast.makeText(context, "Inn i databasekonstruktøren", Toast.LENGTH_LONG).show();
         this.context = context;
     }
 
@@ -60,9 +59,8 @@ public class DatabaseManager  extends SQLiteOpenHelper {
     }
 
 
-    public void insertBoard(ArrayList<int[]> board,String navn,int difficulty){
-        //todo
 
+    public void insertBoard(ArrayList<int[]> board,String navn,int difficulty){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues input = new ContentValues();
         input.put("name",navn);
@@ -143,12 +141,8 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        //todo generate databse
         Log.i(getClass().getSimpleName(), "onCreate: ");
-        //lager tabellen bords
         sqLiteDatabase.execSQL(CREATE_TABLE);
-
-        //insertTestData();
     }
 
 
@@ -156,7 +150,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 //tatt fra eksemplekode i faget
  @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-            //todo DROP TABLE IF EXISTS
             Log.d(getClass().getSimpleName(), "onUpdate");
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLENAME);
             onCreate(sqLiteDatabase);

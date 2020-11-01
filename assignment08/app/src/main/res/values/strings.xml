@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Assignment08-sudoku</string>
 
-    <string name="default_collor">Hvit</string>
+    <string name="default_collor">White</string>
     <string-array name="farger">
         <item>Rød</item>
         <item>Gul</item>
@@ -17,8 +17,8 @@
         <item>@string/default_collor_valiue</item>
     </string-array>
 
-    <string name="language_titel">Default_language</string>
-    <string name="language_settings_summary">Default</string>
+    <string name="language_titel">Language</string>
+    <string name="language_settings_summary">Press to change language</string>
     <string name="default_language">Norwegian</string>
     <string-array name="language">
         <item>@string/default_language</item>
@@ -49,18 +49,18 @@
     <string name="Difficult_buttonTitle01">Easy</string>
     <string name="Difficult_buttonTitle02">mid</string>
     <string name="Difficult_buttonTitle03">Hard</string>
-    <string name="Difficult_text01">Easy Texst</string>
-    <string name="Difficult_text02">Mid</string>
-    <string name="Difficult_text03">Hard</string>
+    <string name="Difficult_text01">"The easy-mode if you are a novis player "</string>
+    <string name="Difficult_text02">A little more difficult sudoku boards</string>
+    <string name="Difficult_text03">The most challenging boards only for the pro gamers</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="gridXsize">40dp</string>
     <string name="gridYsize">40dp</string>
-    <string name="buttonVlidate">todo buttonValidate</string>
-    <string name="buttonBack">go back</string>
-    <string name="buttonStart">start</string>
-    <string name="nuberError">Number Error TODO!!!</string>
-    <string name="correctSudoku">correctSudoku TODO !!!!!</string>
-    <string name="addBoard">addBoard TODO !!!!!</string>
+    <string name="buttonVlidate">Validate Board</string>
+    <string name="buttonBack">Go back</string>
+    <string name="buttonStart">Start</string>
+    <string name="nuberError">Something is wrong with the red squares</string>
+    <string name="correctSudoku">Congratulations you made it!</string>
+    <string name="addBoard">Add a sudoku board</string>
     <string name="buttonSave">Save</string>
     <string name="name">Name</string>
     <string-array name="difficultiesNumbers">
@@ -73,8 +73,8 @@
         <item>@string/Difficult_buttonTitle02</item>
         <item>@string/Difficult_buttonTitle03</item>
     </string-array>
-    <string name="howtoButton">How to?</string>
-    <string name="mainhowto">todo mainhowto</string>
+    <string name="howtoButton">How to play?</string>
+    <string name="mainhowto">This is a Sudoku game written as an assignment in IINI54001 at NTNU  Roles: All the rows, columns and 3x3 squares needs to have alle numbers from 1 to 9. No row, columns or 3x3 square can have multiple of the same numbers.  How to start: Press the start button, choose a difficulty a board, then press the start button. All squares that are colored dark gray must be filled in. After you have finished, press the check button. If everything is in order, you will be sent back to the tray selector.  If something is wrong, you will be notified. If one of the squares turns red, it means that you have entered than illegally character or forgot to enter a value. If you are unsure of certain values, you can long-press on the given route and it will change color. To change the color back, press again.  Add your own board: Press the \"Add a board\" button and you will get a completely empty board with the option to enter the numbers you want and set the name and degree of difficulty. Note that it is not possible to change or delete individual boards after they have been made, you must reset the game for the boards to disappear. This will delete all custom boards.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="dataBaseMessage">todo dataBaseMessage</string>

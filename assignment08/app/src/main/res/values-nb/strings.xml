@@ -45,13 +45,13 @@
     <string name="title_screen_message">Sudoku spill</string>
     <string name="Difficult_buttonTitle01">Lett</string>
     <string name="Difficult_buttonTitle02">Middels</string>
-    <string name="Difficult_buttonTitle03">Vanskligst</string>
-    <string name="Difficult_text01">Dette er en beskrivelse til det lette alternativet</string>
-    <string name="Difficult_text02">Dette er en beskrivelse til det middelste alternativet</string>
+    <string name="Difficult_buttonTitle03">Vanskelig</string>
+    <string name="Difficult_text01">Enkel modus hvis du er en nybegynner</string>
+    <string name="Difficult_text02">litt vanskeligere sudoku-brett</string>
     <string name="Difficult_text03">Dette er en beskrivelse til det vanskeligste alternativet</string>
     <string name="gridXsize">40dp</string>
     <string name="gridYsize">40dp</string>
-    <string name="buttonVlidate">Sjekk</string>
+    <string name="buttonVlidate">Sjekk Brett</string>
     <string name="buttonBack">Tilbake</string>
     <string name="buttonStart">Start</string>
     <string name="nuberError">Noe er feil i de røde rutene</string>
@@ -64,7 +64,7 @@
     <string name="no">Nei</string>
     <string name="yes">Ja</string>
     <string name="dataBaseMessage">Vill du virkelig fjerne alle dine egne sudokubrett?</string>
-    <string name="buttonDeleteBoards">Sett egenlagde brett</string>
+    <string name="buttonDeleteBoards">De mest utfordrende brettene bare for profesjonelle spillere</string>
 
 
 </resources>

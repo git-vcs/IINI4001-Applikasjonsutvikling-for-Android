@@ -184,8 +184,10 @@ public class GridActivity extends AppCompatActivity {
             for (int j = 0; j < 9 ; j++) {
                 Log.d("valitade: ",i+" "+j);
                 try{
-                    //todo legg in jekk for tall større enn 9
-                    temp[j]=Integer.parseInt(((EditText)board.getChildAt(pointer)).getText().toString());
+                    int tempInt = Integer.parseInt(((EditText)board.getChildAt(pointer)).getText().toString());
+                    if(tempInt>=1 && tempInt<=9){
+                        temp[j]= tempInt;
+                    }
                 }catch (Exception e){
                     //tom runte
                     temp[j]=-1;
