@@ -19,16 +19,16 @@
 
     <string name="language_titel">Default_language</string>
     <string name="language_settings_summary">Default</string>
-    <string name="default_language">Norsk</string>
+    <string name="default_language">Norwegian</string>
     <string-array name="language">
         <item>@string/default_language</item>
         <item>Engelsk</item>
     </string-array>
-    <string name="current_language">Norsk</string>
-    <string name="default_language_code">#FFfcfcfc</string>
+    <string name="current_language_code">en</string>
+    <string name="default_language_code">en</string>
     <string-array name="language_code">
-        <item>@string/default_language_code</item>
-        <item>EN</item>
+        <item>nb</item>
+        <item>en</item>
     </string-array>
 
 
@@ -75,5 +75,10 @@
     </string-array>
     <string name="howtoButton">How to?</string>
     <string name="mainhowto">todo mainhowto</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dataBaseMessage">todo dataBaseMessage</string>
+    <string name="buttonDeleteBoards">Delete selfmade sodoku boards</string>
+
 
 </resources>

@@ -2,9 +2,12 @@ package com.assignment08_sudoku;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,6 +109,19 @@ public class boardList extends AppCompatActivity {
         }
 
 
+
+    }
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String newLanguageCode = sharedPreferences.getString(getString(R.string.current_language_code),"");
+        Log.i(getLocalClassName(),"onPostResume   new language: "+newLanguageCode);
+        Locale locale = new Locale(newLanguageCode);
+        Configuration configuration=new Configuration();
+        configuration.setLocale(locale);
+        Resources resources=getResources();
+        resources.updateConfiguration(configuration,resources.getDisplayMetrics());
 
     }
 

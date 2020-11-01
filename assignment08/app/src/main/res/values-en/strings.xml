@@ -18,18 +18,13 @@
         <item>@string/default_collor_valiue</item>
     </string-array>
     <string name="language_titel">Language</string>
-    <string name="language_settings_summary">Press to change languag</string>
+    <string name="language_settings_summary">Press to change language</string>
     <string name="default_language">Norwegian</string>
     <string-array name="language">
         <item>@string/default_language</item>
         <item>English</item>
     </string-array>
-    <string name="current_language">Norwegian</string>
-    <string name="default_language_code">no</string>
-    <string-array name="language_code">
-        <item>@string/default_language_code</item>
-        <item>en</item>
-    </string-array>
+
 
 
 
@@ -65,6 +60,10 @@
     <string name="name">Name</string>
     <string name="howtoButton">How to</string>
     <string name="mainhowto">todo main howto</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="dataBaseMessage">todo dataBaseMessage</string>
+    <string name="buttonDeleteBoards">Delete selfmade sodoku boards</string>
 
 
 </resources>

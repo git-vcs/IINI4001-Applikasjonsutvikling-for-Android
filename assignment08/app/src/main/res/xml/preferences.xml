@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ListPreference
         android:icon="@drawable/ic_launcher_foreground"
-        android:key="@string/current_language"
+        android:key="@string/current_language_code"
         android:title="@string/language_titel"
         android:defaultValue="@string/default_language_code"
         android:entries="@array/language"
@@ -20,6 +20,7 @@
         android:entries="@array/settings_visning"
         android:entryValues="@array/settings_visning_codes"
         android:summary="Trykk på og velg ny bakgrundsfarge på hovedisden."
+        android:onClick="settings"
         />
 
 </PreferenceScreen>

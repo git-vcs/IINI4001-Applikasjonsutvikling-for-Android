@@ -9,6 +9,12 @@
     android:id="@+id/activity_settings"
     >
     <include layout="@layout/toolbar"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonDeleteBoards"
+        android:onClick="reset"
+        />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

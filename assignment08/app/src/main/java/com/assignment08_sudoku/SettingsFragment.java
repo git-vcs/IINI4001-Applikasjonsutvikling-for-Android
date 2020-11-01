@@ -2,6 +2,7 @@ package com.assignment08_sudoku;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -12,4 +13,5 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
     }
+     
 }

@@ -3,6 +3,9 @@ package com.assignment08_sudoku;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -12,6 +15,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import androidx.gridlayout.widget.GridLayout;
+import androidx.preference.PreferenceManager;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class GridActivity extends AppCompatActivity {
@@ -146,22 +151,26 @@ public class GridActivity extends AppCompatActivity {
     public void saveBoard(View v){
         Log.i(getLocalClassName(),"saveBoard");
         ArrayList<int[]> tiles = readBoardInt();
-        boolean succesfullSave=false;
+        boolean succesfullSave=true;
         try{
             DatabaseManager databaseManager=new DatabaseManager(getBaseContext());
             int difficulty=((Spinner)findViewById(R.id.spinnerdifficulties)).getSelectedItemPosition();
             String name=((EditText)findViewById(R.id.editName)).getText().toString();
             Log.i(getLocalClassName(),"saveBoard, navn: "+name+" diff: "+difficulty );
             databaseManager.insertBoard(tiles,name,difficulty);
+
         }catch (Exception e){
             e.printStackTrace();
             succesfullSave=false;
         }
+
         if(succesfullSave){
-           finish();
+            finish();
+            startActivity(new Intent(getApplicationContext(),DifficultSelect.class));
         }else{
             //todo Toast med feilmelding
         }
+
 
     }
 
@@ -189,6 +198,19 @@ public class GridActivity extends AppCompatActivity {
         return tiles;
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String newLanguageCode = sharedPreferences.getString(getString(R.string.current_language_code),"");
+        Log.i(getLocalClassName(),"onPostResume   new language: "+newLanguageCode);
+        Locale locale = new Locale(newLanguageCode);
+        Configuration configuration=new Configuration();
+        configuration.setLocale(locale);
+        Resources resources=getResources();
+        resources.updateConfiguration(configuration,resources.getDisplayMetrics());
+
+    }
 
     private ArrayList<EditText[]> readBoard(){
         //Laster dtata fra brett

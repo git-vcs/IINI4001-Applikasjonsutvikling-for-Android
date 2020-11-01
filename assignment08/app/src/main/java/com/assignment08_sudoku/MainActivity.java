@@ -1,10 +1,14 @@
 package com.assignment08_sudoku;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -42,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+
+    }
 
     public void testButton(View v){
         try {
@@ -64,60 +74,74 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean reset = sharedPreferences.getBoolean("resetDatabase",true);
+
+        String newLanguageCode = sharedPreferences.getString(getString(R.string.current_language_code),"");
+        Log.i(getLocalClassName(),"onStart   language: "+newLanguageCode);
+        Locale locale = new Locale(newLanguageCode);
+        Configuration configuration=new Configuration();
+        configuration.setLocale(locale);
+        Resources resources=getResources();
+        resources.updateConfiguration(configuration,resources.getDisplayMetrics());
+
+
         ArrayList<int[]> data=new ArrayList<>();
         super.onStart();
         Log.i(getLocalClassName(),"onStart");
         try {
-            DatabaseManager db = new DatabaseManager(getBaseContext());
-            db.clean();
-            data.add(new int[]{9,6,8,1,3,5,2,4,7});
-            data.add(new int[]{1,3,7,8,4,2,9,5,6});
-            data.add(new int[]{4,2,5,9,6,7,3,8,1});
-            data.add(new int[]{7,8,2,6,1,3,4,9,5});
-            data.add(new int[]{3,1,4,5,9,8,7,6,2});
-            data.add(new int[]{5,9,6,2,7,4,8,1,3});
-            data.add(new int[]{8,7,9,3,5,1,6,2,4});
-            data.add(new int[]{6,4,1,7,2,9,5,3,8});
-            data.add(new int[]{2,5,3,4,8,6,1,7,9});
-            db.insertBoard(data,"Lett brett Ferdig",0);
-            data=new ArrayList<>();
+            if(reset){
+                DatabaseManager db = new DatabaseManager(getBaseContext());
+                db.clean();
+                data.add(new int[]{9,6,8,1,3,5,2,4,7});
+                data.add(new int[]{1,3,7,8,4,2,9,5,6});
+                data.add(new int[]{4,2,5,9,6,7,3,8,1});
+                data.add(new int[]{7,8,2,6,1,3,4,9,5});
+                data.add(new int[]{3,1,4,5,9,8,7,6,2});
+                data.add(new int[]{5,9,6,2,7,4,8,1,3});
+                data.add(new int[]{8,7,9,3,5,1,6,2,4});
+                data.add(new int[]{6,4,1,7,2,9,5,3,8});
+                data.add(new int[]{2,5,3,4,8,6,1,7,9});
+                db.insertBoard(data,"Lett brett Ferdig",0);
+                data=new ArrayList<>();
 
-            data.add(new int[]{9,-1,8,1,3,5,2,4,7});
-            data.add(new int[]{1,3,7,8,4,2,9,5,6});
-            data.add(new int[]{4,2,-1,9,6,7,3,8,1});
-            data.add(new int[]{7,8,2,-1,1,3,4,9,5});
-            data.add(new int[]{3,1,-1,5,9,8,7,6,2});
-            data.add(new int[]{5,9,6,2,7,4,8,1,3});
-            data.add(new int[]{8,7,9,3,5,1,6,2,4});
-            data.add(new int[]{6,-1,1,7,2,9,5,3,8});
-            data.add(new int[]{2,5,3,4,8,6,1,7,9});
-            db.insertBoard(data,"Lett brett uløst",0);
+                data.add(new int[]{9,-1,8,1,3,5,2,4,7});
+                data.add(new int[]{1,3,7,8,4,2,9,5,6});
+                data.add(new int[]{4,2,-1,9,6,7,3,8,1});
+                data.add(new int[]{7,8,2,-1,1,3,4,9,5});
+                data.add(new int[]{3,1,-1,5,9,8,7,6,2});
+                data.add(new int[]{5,9,6,2,7,4,8,1,3});
+                data.add(new int[]{8,7,9,3,5,1,6,2,4});
+                data.add(new int[]{6,-1,1,7,2,9,5,3,8});
+                data.add(new int[]{2,5,3,4,8,6,1,7,9});
+                db.insertBoard(data,"Lett brett uløst",0);
 
-            data=new ArrayList<>();
+                data=new ArrayList<>();
 
-            data.add(new int[]{1,4,6,7,9,2,3,8,5});
-            data.add(new int[]{2,5,8,3,4,6,7,9,1});
-            data.add(new int[]{3,7,9,5,8,1,4,6,2});
-            data.add(new int[]{4,3,7,9,1,5,8,2,6});
-            data.add(new int[]{5,8,1,6,2,7,9,3,4});
-            data.add(new int[]{6,9,2,4,3,8,1,5,7});
-            data.add(new int[]{7,1,3,2,6,9,5,4,8});
-            data.add(new int[]{8,2,4,1,5,3,6,7,9});
-            data.add(new int[]{9,6,5,8,7,4,2,1,3});
-            db.insertBoard(data,"Middels brett Ferdig",1);
+                data.add(new int[]{1,4,6,7,9,2,3,8,5});
+                data.add(new int[]{2,5,8,3,4,6,7,9,1});
+                data.add(new int[]{3,7,9,5,8,1,4,6,2});
+                data.add(new int[]{4,3,7,9,1,5,8,2,6});
+                data.add(new int[]{5,8,1,6,2,7,9,3,4});
+                data.add(new int[]{6,9,2,4,3,8,1,5,7});
+                data.add(new int[]{7,1,3,2,6,9,5,4,8});
+                data.add(new int[]{8,2,4,1,5,3,6,7,9});
+                data.add(new int[]{9,6,5,8,7,4,2,1,3});
+                db.insertBoard(data,"Middels brett Ferdig",1);
 
-            data=new ArrayList<>();
-            data.add(new int[]{8,2,7,1,5,4,3,9,6});
-            data.add(new int[]{9,6,5,3,2,7,1,4,8});
-            data.add(new int[]{3,4,1,6,8,9,7,5,2});
-            data.add(new int[]{5,9,3,4,6,8,2,7,1});
-            data.add(new int[]{4,7,2,5,1,3,6,8,9});
-            data.add(new int[]{6,1,8,9,7,2,4,3,5});
-            data.add(new int[]{7,8,6,2,3,5,9,1,4});
-            data.add(new int[]{1,5,4,7,9,6,8,2,3});
-            data.add(new int[]{2,3,9,8,4,1,5,6,7});
-            db.insertBoard(data,"Denne er VELDGI vanskelig Ferdig",2);
-
+                data=new ArrayList<>();
+                data.add(new int[]{8,2,7,1,5,4,3,9,6});
+                data.add(new int[]{9,6,5,3,2,7,1,4,8});
+                data.add(new int[]{3,4,1,6,8,9,7,5,2});
+                data.add(new int[]{5,9,3,4,6,8,2,7,1});
+                data.add(new int[]{4,7,2,5,1,3,6,8,9});
+                data.add(new int[]{6,1,8,9,7,2,4,3,5});
+                data.add(new int[]{7,8,6,2,3,5,9,1,4});
+                data.add(new int[]{1,5,4,7,9,6,8,2,3});
+                data.add(new int[]{2,3,9,8,4,1,5,6,7});
+                db.insertBoard(data,"Denne er VELDGI vanskelig Ferdig",2);
+            }// end of if
+            sharedPreferences.edit().putBoolean("resetDatabase",false).apply();
 
 
 
@@ -155,32 +179,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String newLanguageCode = sharedPreferences.getString(getString(R.string.current_language_code),"");
+        Log.i(getLocalClassName(),"onResume   new language: "+newLanguageCode);
+        Locale locale = new Locale(newLanguageCode);
+        Configuration configuration=new Configuration();
+        configuration.setLocale(locale);
+        Resources resources=getResources();
+        resources.updateConfiguration(configuration,resources.getDisplayMetrics());
+
         ArrayList<String> res =null;
         super.onResume();
 
         //henter data fra database
         try {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            Log.i("main onRsume", "Current setting: "+ sharedPreferences.getString(getString(R.string.current_settings_visning_codes),"-1"));
 
-            switch (sharedPreferences.getString(getString(R.string.current_settings_visning_codes),"0")){
-
-                case "0":
-                    //vis all info
-
-                    break;
-                case "1":
-                    // vis alle forfattere
-
-                    break;
-                case "2":
-                    //vis alle bøker
-
-                    break;
-
-
-            }
-            //showResults(res);
 
 
 

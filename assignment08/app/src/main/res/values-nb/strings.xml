@@ -24,12 +24,8 @@
         <item>@string/default_language</item>
         <item>Engelsk</item>
     </string-array>
-    <string name="current_language">Norsk</string>
-    <string name="default_language_code">#FFfcfcfc</string>
-    <string-array name="language_code">
-        <item>@string/default_language_code</item>
-        <item>EN</item>
-    </string-array>
+
+
 
 
 
@@ -65,6 +61,10 @@
     <string name="name">Navn</string>
     <string name="howtoButton">Bruksanvisning</string>
     <string name="mainhowto">Dette er et sudoku spill skrevet til faget IINI4001 ved NTNU. \n\nRegler: Alle 3x3 blokker med rubrikker skal innneholde alle tall fra 1 til 9. \nAlle rader og koloner skal også ha alle tall fra 1 til 9.  \n\nHvordan starte spillet: Man starter med å trykke på START kanppet så velger man en vanskelighetsgrad og et sudoku-brett fra listen og trykker START. \nAlle ruter som er farget mørkegrå skal fylles inn. Etter du er ferdig trykker du på sjekk knappen. Hvis allt er i orden blir du send tilbake til brettvelgeren. \nEr noe feil får du beskjed om det. Blir en av rutene røde betyr det at du har lagt inn enn ulovlig verdig eks glemt å legge inn verdi eller for høy verdi.\nEr du usikker på enkelte verdier kan du presse på den gitte ruten og den vil skrifte farge. For å forandre fargen tilbake press en gang til.   \n\nLegg til et eget brett: Trykk på knappen «Legg til et brett » og du vil få opp et helt tomt brett med muligheten til å legge inn de tallene du vil og sette navn og vanskelighetsgrad. \nMerk at det ikke er mulig å endre eller slette individuelle brett etter de er laget og du må resette spillet for å at brettene skal forsvinne. Dette slette alle egen-lagde brett.\n\n\n\n</string>
+    <string name="no">Nei</string>
+    <string name="yes">Ja</string>
+    <string name="dataBaseMessage">Vill du virkelig fjerne alle dine egne sudokubrett?</string>
+    <string name="buttonDeleteBoards">Sett egenlagde brett</string>
 
 
 </resources>
