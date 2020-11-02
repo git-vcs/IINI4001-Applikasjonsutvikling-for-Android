@@ -54,7 +54,7 @@
     <string name="buttonVlidate">Sjekk Brett</string>
     <string name="buttonBack">Tilbake</string>
     <string name="buttonStart">Start</string>
-    <string name="nuberError">Noe er feil i de røde rutene</string>
+    <string name="numberError">Noe er feil i de røde rutene</string>
     <string name="correctSudoku">Gratulerer du greide det!</string>
     <string name="addBoard">Legg til et brett</string>
     <string name="buttonSave">Lagre</string>

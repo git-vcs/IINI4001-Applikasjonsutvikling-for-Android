@@ -11,19 +11,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import androidx.gridlayout.widget.GridLayout;
 import androidx.preference.PreferenceManager;
-
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -52,26 +47,6 @@ public class GridActivity extends AppCompatActivity {
             emptyBoard();
         }
 
-
-
-        //Debug print, printer xy-akse posisjon istedenfor tall
-        /*
-         GridLayout board=findViewById(R.id.sudokugrid);
-        for (int i = 0; i <board.getChildCount(); i++) {
-            EditText temp=(EditText)board.getChildAt(i);
-            //Log.i("laster data", " "+getResources().getResourceEntryName(temp.getId()).replaceAll("editTextNumber",""));
-
-            temp.setText(getResources().getResourceEntryName(temp.getId()).replaceAll("editTextNumber",""));
-            //temp.setText(i+"");
-
-        }
-        Log.i(getLocalClassName(), "onCreate: ");
-
-
-         */
-
-
-
     }
     private void emptyBoard(){
         //gjemmer ting som har med å lage nytt brett
@@ -86,7 +61,6 @@ public class GridActivity extends AppCompatActivity {
         sjekkButton.setVisibility(Button.GONE);
         for (int i = 0; i <board.getChildCount(); i++) {
             EditText temp=(EditText)board.getChildAt(i);
-            //Log.i("laster data", " "+getResources().getResourceEntryName(temp.getId()).replaceAll("editTextNumber",""));
             temp.setText("");
             temp.setEnabled(true);
         }
@@ -114,14 +88,14 @@ public class GridActivity extends AppCompatActivity {
             Log.i("laster data", " "+getResources().getResourceEntryName(oneTile.getId()).replaceAll("editTextNumber",""));
             char[] tempCharCoordinate=getResources().getResourceEntryName(oneTile.getId()).replaceAll("editTextNumber","").toCharArray();
             int[] yxCoordinate= {Integer.parseInt(tempCharCoordinate[0]+""),Integer.parseInt(tempCharCoordinate[1]+"")};
-            int[] debug =data.get(yxCoordinate[1]);
-            String valiue = String.valueOf(data.get(yxCoordinate[1])[yxCoordinate[0]]);
-            if (valiue.equals("-1")||valiue.equals("")){
+
+            String value = String.valueOf(data.get(yxCoordinate[1])[yxCoordinate[0]]);
+            if (value.equals("-1") || value.equals("")){
                 oneTile.setText("");
                 oneTile.setEnabled(true);
                 oneTile.setClickable(true);
                 oneTile.setBackgroundColor(Color.LTGRAY);
-                //Log press for å skifte frage
+                //Log press for å skifte farger
                 oneTile.setOnLongClickListener(new View.OnLongClickListener(){
                     @Override
                     public boolean onLongClick(View view) {
@@ -139,7 +113,7 @@ public class GridActivity extends AppCompatActivity {
             }else {
                 // legger inn verdi hentet fra database
                 // Låser verdien og setter fargen
-                oneTile.setText(valiue);
+                oneTile.setText(value);
                 oneTile.setEnabled(false);
                 oneTile.setBackgroundColor(Color.WHITE);
             }
@@ -151,7 +125,7 @@ public class GridActivity extends AppCompatActivity {
     public void saveBoard(View v){
         Log.i(getLocalClassName(),"saveBoard");
         ArrayList<int[]> tiles = readBoardInt();
-        boolean succesfullSave=true;
+        boolean successfulSave=true;
         try{
             DatabaseManager databaseManager=new DatabaseManager(getBaseContext());
             int difficulty=((Spinner)findViewById(R.id.spinnerdifficulties)).getSelectedItemPosition();
@@ -161,16 +135,13 @@ public class GridActivity extends AppCompatActivity {
 
         }catch (Exception e){
             e.printStackTrace();
-            succesfullSave=false;
+            successfulSave=false;
         }
 
-        if(succesfullSave){
+        if(successfulSave){
             finish();
             startActivity(new Intent(getApplicationContext(),DifficultSelect.class));
-        }else{
-            //todo Toast med feilmelding
         }
-
 
     }
 
@@ -182,14 +153,14 @@ public class GridActivity extends AppCompatActivity {
         for (int i = 0; i <9; i++) {
             int[] temp=new int[9];
             for (int j = 0; j < 9 ; j++) {
-                Log.d("valitade: ",i+" "+j);
+                Log.d("validate: ",i+" "+j);
                 try{
                     int tempInt = Integer.parseInt(((EditText)board.getChildAt(pointer)).getText().toString());
                     if(tempInt>=1 && tempInt<=9){
                         temp[j]= tempInt;
                     }
                 }catch (Exception e){
-                    //tom runte
+                    //tom rute
                     temp[j]=-1;
                 }
                 pointer++;
@@ -222,7 +193,7 @@ public class GridActivity extends AppCompatActivity {
         for (int i = 0; i <9; i++) {
             EditText[] temp=new EditText[9];
             for (int j = 0; j < 9 ; j++) {
-                Log.d("valitade: ",i+" "+j);
+                Log.d("validate: ",i+" "+j);
                 temp[j]=((EditText) board.getChildAt(pointer));
                 pointer++;
             }
@@ -241,14 +212,14 @@ public class GridActivity extends AppCompatActivity {
 
     private void validateBoard(){
         boolean block=true;
-        boolean columSum=true;
+        boolean columnSum=true;
         boolean rowSum=true;
         boolean emptyTile=false;
-        //Laster dtata fra brett og analyserer innholdet
+        //Laster data fra brett og analyserer innholdet
         ArrayList<EditText[]> tiles = readBoard();
 
         // hvis vi går igjennom alle rader og finner feil er det ikke behov for å sjekke resten
-        if(columSum&&rowSum){
+        if(columnSum&&rowSum){
             //row sum
             for (int i = 0; i < tiles.size(); i++) {
                 int sum=0;
@@ -260,18 +231,17 @@ public class GridActivity extends AppCompatActivity {
                         }else throw new Exception();
                     }catch (Exception e){
                         tiles.get(i)[j].setBackgroundColor(Color.RED);
-                        Toast.makeText(getBaseContext(),R.string.nuberError,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(),R.string.numberError,Toast.LENGTH_LONG).show();
                         emptyTile=true;
                     }
                 }
 
                 if(sum == sudokuSum && !emptyTile){
-                    Log.i("valitade", "sum ok rad: "+i+" Sum: "+sum);
+                    Log.i("validate", "sum ok rad: "+i+" Sum: "+sum);
                 }else {
                     rowSum=false;
-                    Log.i("valitade","Sum IKKE ok rad: "+i+" Sum: "+sum);
-
-                };
+                    Log.i("validate","Sum IKKE ok rad: "+i+" Sum: "+sum);
+                }
 
             }
 
@@ -279,9 +249,9 @@ public class GridActivity extends AppCompatActivity {
 
 
 
-        //colum sum
+        //column sum
 
-        if(columSum&&rowSum){
+        if(columnSum&&rowSum){
             for (int i = 0; i < tiles.size(); i++) {
                 int sum=0;
                 for (int j = 0; j <9 ; j++) {
@@ -293,21 +263,21 @@ public class GridActivity extends AppCompatActivity {
 
                     }catch (Exception e){
                         tiles.get(j)[i].setBackgroundColor(Color.RED);
-                        Toast.makeText(getBaseContext(),R.string.nuberError,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(),R.string.numberError,Toast.LENGTH_LONG).show();
                         emptyTile=true;
                     }
                 }
                 if(sum==sudokuSum&&!emptyTile){
-                    Log.i("valitade", "sum ok colum: "+i+" Sum: "+sum);
-                }else Log.i("valitade","Sum IKKE ok colum: "+i+" Sum: "+sum);
+                    Log.i("validate", "sum ok column: "+i+" Sum: "+sum);
+                }else Log.i("validate","Sum IKKE ok column: "+i+" Sum: "+sum);
 
             }
         }
 
 
-        if(rowSum&&columSum){
+        if(rowSum&&columnSum){
             //3x3 sum
-            //hoppder i x-akse
+            //hopper i x-akse
             int blockSum = 0;
             //block 0x0
             blockSum += Integer.parseInt(tiles.get(0)[0].getText().toString())+Integer.parseInt(tiles.get(0)[1].getText().toString())+Integer.parseInt(tiles.get(0)[2].getText().toString());
@@ -425,7 +395,7 @@ public class GridActivity extends AppCompatActivity {
 
 
 
-        if(columSum&&rowSum&&block){
+        if(columnSum&&rowSum&&block){
             Toast.makeText(getBaseContext(),R.string.correctSudoku,Toast.LENGTH_LONG).show();
             finish();
         }

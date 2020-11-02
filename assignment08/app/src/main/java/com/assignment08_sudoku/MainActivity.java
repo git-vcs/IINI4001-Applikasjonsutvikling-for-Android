@@ -1,31 +1,19 @@
 package com.assignment08_sudoku;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Locale;
 
 /*
@@ -46,31 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-
-
-    }
-
-    public void testButton(View v){
-        try {
-    
-            try {
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-        }catch (Exception e){
-            Log.i("TEST",e.getMessage());
-            e.printStackTrace();
-
-        }
-
-    }
 
     @Override
     protected void onStart() {
@@ -139,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 data.add(new int[]{7,8,6,2,3,5,9,1,4});
                 data.add(new int[]{1,5,4,7,9,6,8,2,3});
                 data.add(new int[]{2,3,9,8,4,1,5,6,7});
-                db.insertBoard(data,"Denne er VELDGI vanskelig Ferdig",2);
+                db.insertBoard(data,"Denne er VELDIG vanskelig Ferdig",2);
             }// end of if
             sharedPreferences.edit().putBoolean("resetDatabase",false).apply();
 
@@ -156,21 +119,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
-
-
         setContentView(R.layout.activity_main);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String selectedColor=sharedPreferences.getString(getString(R.string.current_color),"#FFfcfcfc");
-        ConstraintLayout constraintLayout= (ConstraintLayout) findViewById(R.id.activity_main);
-        if (constraintLayout!=null){
-            //constraintLayout.setBackgroundColor(Color.parseColor(selectedColor));
-
-        }else Log.i("main", "onCreate: layout=NULL!!!!");
     }
 
     public void oneStartGame(View v) {
@@ -187,59 +136,22 @@ public class MainActivity extends AppCompatActivity {
         configuration.setLocale(locale);
         Resources resources=getResources();
         resources.updateConfiguration(configuration,resources.getDisplayMetrics());
-
-        ArrayList<String> res =null;
         super.onResume();
 
-        //henter data fra database
-        try {
-
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
     }
 
-    //metoden som forandrer listen av bøker
-    public void showResults(ArrayList<String> list) {
 
-    }
 
 
     public void settings(View v){
         startActivity(new Intent(this,settingsActivity.class));
     }
 
-    //lager en fil lokalt
-
-    /*
-    private void makeDataFile(String fileName){
-        File dir=getFilesDir();
-        File file=new File(dir,fileName);
-        try {
-            PrintWriter skriver=new PrintWriter(file);
-            for (int i = 0; i <data.length ; i+=2) {
-                skriver.println(data[i]+","+data[i+1]);
-            }
-            skriver.close();
-        }catch (Exception e){
-            Log.i("Exseption skriving: ",e.getMessage());
-        }
-
-    }
-
-
-     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Log.i("onOptionsItemSelected", (String.valueOf(item.getItemId())));
         switch (item.getItemId()){
             case R.id.activity_settings:
-
                 startActivity(new Intent(getApplicationContext(),settingsActivity.class));
                 return true;
 
@@ -247,55 +159,5 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-    //leser fra lokal fil
-   /*
-    private void readFiles(String fileName){
-        try {
-            lestFil= new ArrayList<String>();
-
-            File dir = getFilesDir();
-            File file=new File(dir,fileName);
-            FileReader leser=new FileReader(file);
-            BufferedReader bufferedReader=new BufferedReader(leser);
-            String line=bufferedReader.readLine();
-            while (line!=null){
-                lestFil.add(line);
-                line=bufferedReader.readLine();
-            }
-            bufferedReader.close();
-            leser.close();
-        }catch (Exception e){
-            Log.i("readFiles",e.getMessage());
-        }
-
-    }
-
-    */
-
-   /*
-    private void writeToDataBase(){
-        try {
-            db=new DatabaseManager(getBaseContext());
-            db.clean();
-            for (int i = 0; i <lestFil.size(); i++) {
-                String enLinje[] = lestFil.get(i).split(",");
-                Exception tableSizeExseption = null;
-                //sjekker at tabellen er delt i 2 på forfatter og boktittel
-                if(enLinje.length==2){
-                    db.insert(enLinje[0],enLinje[1]);
-                }else throw tableSizeExseption;
-            }
-
-        }catch (Exception e){
-            Log.i("writeToDataBase",e.getMessage());
-        }
-    }
-
-
-    */
-
-
 
 }

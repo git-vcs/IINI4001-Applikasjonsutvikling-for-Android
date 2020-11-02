@@ -1,10 +1,7 @@
 package com.assignment08_sudoku;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
-
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -14,12 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class boardList extends AppCompatActivity {
 
@@ -29,7 +23,7 @@ public class boardList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_list);
         try {
-            //oppkoblink til sql-database for å hente en lista å brettnavn
+            //oppkobling til sql-database for å hente en lista og brettnavn
             DatabaseManager db=new DatabaseManager(getBaseContext());
             Intent intent=getIntent();
             Log.i(getLocalClassName(),"onCreate difficulty: "+intent.getExtras().get("difficulty"));
@@ -73,7 +67,7 @@ public class boardList extends AppCompatActivity {
         try {
             Intent intetnt=getIntent();
             DatabaseManager db = new DatabaseManager(getBaseContext());
-            //hetner brettet fra databsen
+            //henter brettet fra databasen
             board = db.getBoard(difficulty, intetnt.getExtras().get("boardname").toString());
             int pointer=0;
             ArrayList<int []> data = new ArrayList<>();
@@ -85,7 +79,7 @@ public class boardList extends AppCompatActivity {
                 }
                 data.add(row);
             }
-            //åpner brette
+            //åpner brettet
             Intent intent =new Intent(this,GridActivity.class);
             intent.putExtra("board",data);
             startActivityForResult(intent,1);
@@ -98,11 +92,9 @@ public class boardList extends AppCompatActivity {
     public void addBoard(View v){
         ArrayList<String> board;
         try {
-            Intent intetnt=getIntent();
-            int pointer=0;
-            //åpner brette
+            //åpner brettet
             Intent intent =new Intent(this,GridActivity.class);
-            intent.putExtra("newBorad",true);
+            intent.putExtra("newBoard",true);
             startActivityForResult(intent,1);
         } catch (Exception e) {
             e.printStackTrace();

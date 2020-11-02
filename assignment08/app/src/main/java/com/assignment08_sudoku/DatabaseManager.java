@@ -5,12 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class DatabaseManager  extends SQLiteOpenHelper {
-    Context context;
+    final Context context;
 
     static final String DATABASE_NAME="sudoku";
     static final int VERSION=1;
@@ -40,8 +39,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
         ArrayList<String> res = new ArrayList<>();
         if (cursor != null) {
             cursor.moveToFirst();
-
-            String columnNmaes[]=cursor.getColumnNames();
             try {
                 for (int i = 0; i <cursor.getColumnCount()-3 ; i++) {
                     res.add(cursor.getString(i+3));
@@ -78,22 +75,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<String> gettest()  {
-        Log.i(getClass().getSimpleName(), "gettest: ");
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor =
-                db.query(TABLENAME, new java.lang.String[]{"_id", "1"}, null, null, null, null, null, null);
-        ArrayList<java.lang.String> res = new ArrayList<>();
-        if (cursor != null) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                res.add(cursor.getString(1));
-                cursor.moveToNext();
-            }
-        }
-        db.close();
-        return res;
-    }
 
 
     public ArrayList<String[]> listNames(int difficulty){
@@ -115,26 +96,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
         return res;
 
 
-    }
-
-    public void insertTestData(){
-
-        ContentValues input = new ContentValues();
-        SQLiteDatabase db = null;
-        db = this.getWritableDatabase();
-
-        input.put("_00",100);
-        input.put("difficulty",1);
-
-        input.put("name","navnEntry");
-        input.put("_88",100);
-
-
-        db.insert(TABLENAME,null,input);
-        ContentValues input2 =new ContentValues();
-        input2.put("_88",2);
-        input2.put("name","navnEntry2");
-        db.insert(TABLENAME,null,input2);
     }
 
 

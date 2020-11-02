@@ -1,30 +1,19 @@
 package com.assignment08_sudoku;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ConfigurationInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.media.audiofx.DynamicsProcessing;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
-
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.TaskStackBuilder;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceScreen;
-
 import java.util.Locale;
 
 public class settingsActivity extends AppCompatActivity {
@@ -50,11 +39,6 @@ public class settingsActivity extends AppCompatActivity {
         Log.i(this.getClass().getSimpleName(),"OnCreate");
         setContentView(R.layout.activity_settings);
         if(findViewById(R.id.fragment_settings)!=null){
-
-            if(savedInstanceState!=null){
-
-
-            }else Log.i(this.getClass().getSimpleName(), "onCreate: fant ikke savednstance");
             //legger til fragmentet med innstillingene.
             getFragmentManager().beginTransaction().add(R.id.fragment_settings,new SettingsFragment()).commit();
 
@@ -133,9 +117,6 @@ public class settingsActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(getLocalClassName(),"onDestroy");
-        // denne kalles hver gang man forandrer en spared prefference
-        //preferenceManager.registerOnSharedPreferenceChangeListener(null);
-
     }
 
     @Override

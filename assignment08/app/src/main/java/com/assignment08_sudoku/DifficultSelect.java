@@ -2,7 +2,6 @@ package com.assignment08_sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -10,7 +9,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import java.util.Locale;
 
 public class DifficultSelect extends AppCompatActivity {

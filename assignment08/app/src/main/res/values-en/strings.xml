@@ -53,7 +53,7 @@
     <string name="buttonVlidate">Validate Board</string>
     <string name="buttonBack">Go back</string>
     <string name="buttonStart">Start</string>
-    <string name="nuberError">Something is wrong with the red squares</string>
+    <string name="numberError">Something is wrong with the red squares</string>
     <string name="correctSudoku">Congratulations you made it!</string>
     <string name="addBoard">Add a sudoku board</string>
     <string name="buttonSave">Save</string>

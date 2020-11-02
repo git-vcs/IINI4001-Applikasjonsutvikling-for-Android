@@ -5,7 +5,7 @@
     <string-array name="farger">
         <item>Rød</item>
         <item>Gul</item>
-        <item>Grøn</item>
+        <item>Grønn</item>
         <item>@string/default_collor</item>
     </string-array>
     <string name="current_color">backgroundColor</string>
@@ -30,13 +30,7 @@
         <item>nb</item>
         <item>en</item>
     </string-array>
-
-
-    <string-array name="settings_visning">
-        <item>Vist alt</item>
-        <item>Vist alle forfattere</item>
-        <item>Vis alle bøker</item>
-    </string-array>
+    d
     <string name="default_settings_visning_codes">0</string>
     <string name="current_settings_visning_codes">0</string>
     <string-array name="settings_visning_codes">
@@ -49,7 +43,7 @@
     <string name="Difficult_buttonTitle01">Easy</string>
     <string name="Difficult_buttonTitle02">mid</string>
     <string name="Difficult_buttonTitle03">Hard</string>
-    <string name="Difficult_text01">The easy-mode if you are a novis player</string>
+    <string name="Difficult_text01">The easy-mode if you are a novice player</string>
     <string name="Difficult_text02">A little more difficult sudoku boards</string>
     <string name="Difficult_text03">The most challenging boards only for the pro gamers</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -58,7 +52,7 @@
     <string name="buttonVlidate">Validate Board</string>
     <string name="buttonBack">Go back</string>
     <string name="buttonStart">Start</string>
-    <string name="nuberError">Something is wrong with the red squares</string>
+    <string name="numberError">Something is wrong with the red squares</string>
     <string name="correctSudoku">Congratulations you made it!</string>
     <string name="addBoard">Add a sudoku board</string>
     <string name="buttonSave">Save</string>
