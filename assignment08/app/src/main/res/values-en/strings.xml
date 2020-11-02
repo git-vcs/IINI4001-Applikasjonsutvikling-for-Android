@@ -45,7 +45,7 @@
     <string name="Difficult_buttonTitle01">Easy</string>
     <string name="Difficult_buttonTitle02">mid</string>
     <string name="Difficult_buttonTitle03">Hard</string>
-    <string name="Difficult_text01">"The easy-mode if you are a novis player "</string>
+    <string name="Difficult_text01">The easy-mode if you are a novis player</string>
     <string name="Difficult_text02">A little more difficult sudoku boards</string>
     <string name="Difficult_text03">The most challenging boards only for the pro gamers</string>
     <string name="gridXsize">40dp</string>
