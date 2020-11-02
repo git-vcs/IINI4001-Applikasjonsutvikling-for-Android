@@ -11,16 +11,5 @@
         android:summary="@string/language_settings_summary"
         />
 
-    <ListPreference
-        android:icon="@drawable/ic_launcher_foreground"
-
-        android:key="@string/current_settings_visning_codes"
-        android:title="Visningsinstliinger"
-        android:defaultValue="@string/default_settings_visning_codes"
-        android:entries="@array/settings_visning"
-        android:entryValues="@array/settings_visning_codes"
-        android:summary="Trykk på og velg ny bakgrundsfarge på hovedisden."
-        android:onClick="settings"
-        />
 
 </PreferenceScreen>

@@ -64,7 +64,7 @@
     <string name="no">Nei</string>
     <string name="yes">Ja</string>
     <string name="dataBaseMessage">Vill du virkelig fjerne alle dine egne sudokubrett?</string>
-    <string name="buttonDeleteBoards">De mest utfordrende brettene bare for profesjonelle spillere</string>
+    <string name="buttonDeleteBoards">Slette egenlagde spilll</string>
 
 
 </resources>

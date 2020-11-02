@@ -33,7 +33,7 @@
             android:layout_marginRight="10dp"
             android:contentDescription="Settings"
             android:onClick="settings"
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@drawable/ic_settings_foreground"
             app:showAsAction="ifRoom" />
 
 
