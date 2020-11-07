@@ -73,6 +73,7 @@
     <string name="no">No</string>
     <string name="dataBaseMessage">todo dataBaseMessage</string>
     <string name="buttonDeleteBoards">Delete selfmade sodoku boards</string>
+    <string name="boardNotCorrect">Something is wrong place try again.</string>
 
 
 </resources>

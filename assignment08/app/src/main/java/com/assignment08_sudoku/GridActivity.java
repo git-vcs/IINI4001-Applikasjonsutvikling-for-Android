@@ -398,6 +398,8 @@ public class GridActivity extends AppCompatActivity {
         if(columnSum&&rowSum&&block){
             Toast.makeText(getBaseContext(),R.string.correctSudoku,Toast.LENGTH_LONG).show();
             finish();
+        }else{
+            Toast.makeText(getBaseContext(),R.string.boardNotCorrect,Toast.LENGTH_LONG).show();
         }
     }
 

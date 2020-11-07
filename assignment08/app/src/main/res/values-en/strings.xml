@@ -64,6 +64,7 @@
     <string name="no">No</string>
     <string name="dataBaseMessage">Do you relay want to delete all your cool boards?</string>
     <string name="buttonDeleteBoards">Delete selfmade sodoku boards</string>
+    <string name="boardNotCorrect">"Something is wrong place try again "</string>
 
 
 </resources>
