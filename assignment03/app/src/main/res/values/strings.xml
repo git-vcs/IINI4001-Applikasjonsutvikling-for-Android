@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">assignment03</string>
+    <string name="activity_person">Legg til eller endre person</string>
+    <string name="activity_person_default_name">Navn</string>
+    <string name="activity_person_default_date">Fødselsdato(D.M.y)</string>
+    <string name="avslutt">Avslutt</string>
+    <string name="addButton">Legg til person</string>
+    <string name="addPerson">Legg til person</string>
+    <string name="editPerson">Endre person</string>
+    <string name="buttonSave">Lagre</string>
+</resources>
